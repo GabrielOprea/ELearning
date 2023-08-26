@@ -1,6 +1,26 @@
-<div class="sidebar-logo">
+<!-- <div class="sidebar-logo">
     <div class="welcometxt" style="float: left;"><b style="color: white;">{{title}}</b></div>
     <button class="logoutbtn" style="margin-right: 1%;" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
     <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
     <button class="logoutbtn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-</div>
+</div> -->
+
+<div class="content">
+    <div class="header" id="header">
+      <div class="nav">
+       <h4 style="margin-left: 3%; margin-top: 1%; font-family: Verdana; color: rgb(248, 247, 247);">ELearning Management System</h4><br>
+       <div class="switchs">
+        <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+        <button *ngIf="_router.url == '/'" style="font-weight: bold;" class="log-current" id="log-current" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+        <div class="dropdown">
+          <button style="font-weight: bold;" class="log" id="log" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Login</button>
+          <div class="dropdown-content">
+          <!-- / -->
+          </div>
+        </div>
+       
+        <button style="font-weight: bold;" class="log" id="log" [routerLink]="['/registration']"><i class="fa fa-user-plus"></i> Sign Up</button>
+      </div>
+    </div>
+  <br>
+  </div>

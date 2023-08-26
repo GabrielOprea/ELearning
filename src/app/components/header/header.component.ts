@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   currRole = '';
   title = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private _router : Router) { }
+  constructor(private activatedRoute: ActivatedRoute, public _router : Router) { }
 
   ngOnInit(): void 
   {
