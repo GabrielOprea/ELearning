@@ -1,9 +1,9 @@
 
 <div class="wrapper">
     <div class="container">
-        <button class="headbtn1" id="userbtn">User</button>
-        <button class="headbtn2" id="professorbtn">Professor</button>
-        <button class="headbtn3" id="adminbtn">Admin</button>
+        <button class="headbtn1"  (click)="changeForm('user')" id="userbtn">User</button>
+        <button class="headbtn2"  (click)="changeForm('professor')" id="professorbtn">Professor</button>
+        <button class="headbtn3" (click)="changeForm('admin')" id="adminbtn">Admin</button>
       <div class="user-login-form">
         <form #userloginform="ngForm" (ngSubmit)="loginUser()">
           <small class="text-danger"><b>{{msg}}</b></small>

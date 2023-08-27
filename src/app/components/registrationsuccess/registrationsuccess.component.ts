@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registrationsuccess',
@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class RegistrationsuccessComponent implements OnInit {
 
-  constructor(private router : Router) { }
-
+  constructor(private router : Router,  private route: ActivatedRoute) { }
+  paramName: string | null = "";
   ngOnInit(): void 
   {
+
+        // Access the parameter using paramMap
+        this.route.paramMap.subscribe(params => {
+          this.paramName = params.get('paramName');
+        });
     setTimeout(() => {
-      this.router.navigate(['login']);
+      this.router.navigate(['login', this.paramName]);
   }, 7000);
   }
 

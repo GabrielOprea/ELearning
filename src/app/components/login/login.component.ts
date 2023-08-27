@@ -151,5 +151,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
+  changeForm(paramName: string)
+  {
+    this._router.navigate(['/login', paramName]);
+  }
 }

@@ -40,19 +40,19 @@ export class RegistrationComponent implements OnInit {
         $(".nav1").removeClass("highlight1")
       });
     }
-    if(this.paramName == null || this.paramName == "professor" || this.paramName == "") {
+    if(this.paramName == "professor") {
       $(".nav2").addClass("highlight1")
       $("#home-tab").click(function(){
         $("#profile").hide();
         $("#home").show();
-        $(".nav2").addClass("highlight1")
-        $(".nav1").removeClass("highlight2")
+        $(".nav1").addClass("highlight2")
+        $(".nav2").removeClass("highlight1")
       });
       $("#profile-tab").click(function(){
         $("#home").hide();
         $("#profile").show();
-        $(".nav1").addClass("highlight2")
-        $(".nav2").removeClass("highlight1")
+        $(".nav2").addClass("highlight1")
+        $(".nav1").removeClass("highlight2")
       });
     }
   }
@@ -63,7 +63,7 @@ export class RegistrationComponent implements OnInit {
       data => {
         console.log("Registration Success");
         sessionStorage.setItem("username",this.user.username);
-        this._router.navigate(['/registrationsuccess']);
+        this._router.navigate(['/registrationsuccess', 'user']);
       },
       error => {
         console.log("Registration Failed");
@@ -79,7 +79,7 @@ export class RegistrationComponent implements OnInit {
       data => {
         console.log("Registration Success");
         sessionStorage.setItem("doctorname",this.professor.professorname);
-        this._router.navigate(['/registrationsuccess']);
+        this._router.navigate(['/registrationsuccess', 'professor']);
       },
       error => {
         console.log("Registration Failed");
@@ -89,4 +89,8 @@ export class RegistrationComponent implements OnInit {
     )
   }
 
+  changeForm(paramName: string)
+  {
+    this._router.navigate(['/registration', paramName]);
+  }
 }

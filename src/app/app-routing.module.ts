@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'',component:WelcomepageComponent},
   {path:'login/:paramName',component:LoginComponent},
   {path:'registration/:paramName',component:RegistrationComponent},
-  {path:'registrationsuccess',component:RegistrationsuccessComponent},
+  {path:'registrationsuccess/:paramName',component:RegistrationsuccessComponent},
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[AdminGuard]},
   {path:'userdashboard',component:UserdashboardComponent,canActivate:[UserGuard]},
   {path:'professordashboard',component:ProfessordashboardComponent,canActivate:[ProfessorGuard]},
