@@ -8,18 +8,65 @@
 <div class="content">
     <div class="header" id="header">
       <div class="nav">
-       <h4 style="margin-left: 3%; margin-top: 1%; font-family: Verdana; color: rgb(248, 247, 247);">ELearning Management System</h4><br>
+        <div class="logo">
+          <img src="https://elearningindustry.com/wp-content/uploads/2016/08/organization-ready-for-elearning.png" style="border-radius: 50%; background-color: white;" width="50" height="40">
+          <h4 style="margin-left: 3%; margin-top: 1%; font-family: Verdana; color: rgb(248, 247, 247);">ELearning Management System</h4><br>
+
+        </div>
        <div class="switchs">
         <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
         <button *ngIf="_router.url == '/'" style="font-weight: bold;" class="log-current" id="log-current" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
         <div class="dropdown">
-          <button style="font-weight: bold;" class="log" id="log" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Login</button>
+          <button  *ngIf="_router.url !== '/login'" style="font-weight: bold;" class="log" id="log"><i class="fa fa-sign-in"></i> Login</button>
+          <button  *ngIf="_router.url == '/login'" style="font-weight: bold;" class="log-current" id="log-current"><i class="fa fa-sign-in"></i> Login</button>
+
           <div class="dropdown-content">
-          <!-- / -->
+            <div class="detail" (click)="login()" style="background-color: rgb(146, 107, 146);">
+                <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Admin </h4>
+                <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                    <img src="https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" width="30" height="30">
+                </div>
+            </div>
+            <div class="detail" (click)="login()" style="background-color: rgb(146, 107, 146);">
+              <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Professor </h4>
+              <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                  <img src="https://cdn1.iconfinder.com/data/icons/flat-education-icons-1/512/37-512.png" width="30" height="30">
+              </div>
+          </div>
+          <div class="detail" (click)="login()" style="background-color: rgb(146, 107, 146);">
+            <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> User </h4>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                <img src="https://cdn-icons-png.flaticon.com/256/666/666201.png" width="30" height="30">
+            </div>
+          </div>
           </div>
         </div>
        
-        <button style="font-weight: bold;" class="log" id="log" [routerLink]="['/registration']"><i class="fa fa-user-plus"></i> Sign Up</button>
+        <div class="dropdown">
+          <button  *ngIf="_router.url !== '/registration'" style="font-weight: bold;" class="log" id="log"><i class="fa fa-user-plus"></i>  Sign Up</button>
+          <button  *ngIf="_router.url == '/registration'" style="font-weight: bold;" class="log-current" id="log-current"><i class="fa fa-user-plus"></i> Sign Up</button>
+
+          <div class="dropdown-content">
+            <div class="detail" (click)="registration()" style="background-color: rgb(146, 107, 146);">
+                <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Admin </h4>
+                <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                    <img src="https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" width="30" height="30">
+                </div>
+            </div>
+            <div class="detail" (click)="registration()" style="background-color: rgb(146, 107, 146);">
+              <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Professor </h4>
+              <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                  <img src="https://cdn1.iconfinder.com/data/icons/flat-education-icons-1/512/37-512.png" width="30" height="30">
+              </div>
+          </div>
+          <div class="detail" (click)="registration()" style="background-color: rgb(146, 107, 146);">
+            <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> User </h4>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                <img src="https://cdn-icons-png.flaticon.com/256/666/666201.png" width="30" height="30">
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   <br>
