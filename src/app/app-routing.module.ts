@@ -26,8 +26,8 @@ import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path:'',component:WelcomepageComponent},
-  {path:'login',component:LoginComponent},
-  {path:'registration',component:RegistrationComponent},
+  {path:'login/:paramName',component:LoginComponent},
+  {path:'registration/:paramName',component:RegistrationComponent},
   {path:'registrationsuccess',component:RegistrationsuccessComponent},
   {path:'admindashboard',component:AdmindashboardComponent,canActivate:[AdminGuard]},
   {path:'userdashboard',component:UserdashboardComponent,canActivate:[UserGuard]},

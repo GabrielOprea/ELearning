@@ -52,13 +52,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  login()
+  login(paramName: string)
   {
-    this._router.navigate(['/login']);
+    this._router.navigate(['/login', paramName]);
   }
 
-  registration()
+  registration(paramName: string)
   {
-    this._router.navigate(['/registration']);
+    this._router.navigate(['/registration', paramName]);
   }
 }
