@@ -68,5 +68,20 @@ export class UserprofileComponent implements OnInit {
     )
   }
 
-
+  wrongPassword(password : string) {
+    if (
+      password.length >= 6 &&
+      password.length <= 20 &&
+      /[A-Z]/.test(password) &&        // At least one uppercase letter
+      /[a-z]/.test(password) &&        // At least one lowercase letter
+      /[0-9]/.test(password) &&        // At least one numeric digit
+      /[!@#$%^&*()_+{}\[\]:;<>,.?~\-]/.test(password)  // At least one special character
+    ) {
+      // Password meets all criteria
+      return false;
+    } else {
+      // Password does not meet all criteria
+      return true;
+    }
+  }
 }

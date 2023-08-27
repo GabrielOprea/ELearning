@@ -42,6 +42,8 @@ export class HeaderComponent implements OnInit {
 
   navigateHome()
   {
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = this.currRole.replace(/"/g, '');
     if(this.loggedUser === "admin@gmail.com"){
       this._router.navigate(['/admindashboard']);
     }

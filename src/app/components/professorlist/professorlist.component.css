@@ -43,7 +43,7 @@
     height: 180px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    background-color: rgb(17, 90, 85);
+    background-color: #440707;
 }
 .circle{
     background-color: rgb(253, 255, 138);
@@ -64,7 +64,7 @@
 .status-btn
 {
     padding: 4px 30px 5px 30px;
-    background-color: darkgreen;
+    background-color: #440707;
     color: white;
     border-radius: 15px;
     text-align: center;
@@ -77,7 +77,7 @@
 }
 .status-btn1
 {
-    background-color: rgb(199, 93, 32);
+    background-color: #440707;
     padding: 4px 30px 5px 30px;
     color: white;
     vertical-align: middle;
@@ -91,7 +91,7 @@
 }
 .status-btn2
 {
-    background-color: rgb(187, 40, 40);
+    background-color: #440707;
     padding: 4px 30px 5px 30px;
     color: white;
     vertical-align: middle;
@@ -134,7 +134,7 @@
 .slotcover
 {
   border-radius: 10px;
-  background-color: rgb(128, 44, 18);
+  background-color: #440707;
   padding: 5px 10px 5px 10px;
   color: white;
   width: 30%;

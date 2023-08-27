@@ -15,8 +15,12 @@
         </div>
        <div class="switchs">
         <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
-        <button *ngIf= "loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
         <button *ngIf="_router.url == '/'" style="font-weight: bold;" class="log-current" id="log-current" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+
+        <button *ngIf="_router.url !== '/userdashboard' && _router.url !== '/professordashboard' && _router.url !== '/admindashboard' && loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click) = "navigateHome()"><i class="fa fa-th"></i> Dashboard</button>
+        <button *ngIf="(_router.url == '/userdashboard' || _router.url == '/professordashboard' || _router.url == '/admindashboard') && loggedUser !== ''" style="font-weight: bold;" class="log-current" id="log-current" (click) = "navigateHome()"><i class="fa fa-th"></i> Dashboard</button>
+
+        <button *ngIf= "loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
         <div class="dropdown" *ngIf="!_router.url.startsWith('/login') && loggedUser === ''">
           <button  *ngIf="!_router.url.startsWith('/login')" style="font-weight: bold;" class="log" id="log"><i class="fa fa-sign-in"></i> Login</button>
 
