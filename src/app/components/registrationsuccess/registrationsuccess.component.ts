@@ -9,17 +9,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegistrationsuccessComponent implements OnInit {
 
   constructor(private router : Router,  private route: ActivatedRoute) { }
-  paramName: string | null = "";
   ngOnInit(): void 
   {
 
         // Access the parameter using paramMap
         this.route.paramMap.subscribe(params => {
-          this.paramName = params.get('paramName');
+          setTimeout(() => {
+            console.log("name " + params.get('paramName'));
+            this.router.navigate(['login', params.get('paramName')]);
+        }, 7000);
         });
-    setTimeout(() => {
-      this.router.navigate(['login', this.paramName]);
-  }, 7000);
   }
 
 }

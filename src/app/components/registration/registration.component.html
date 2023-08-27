@@ -9,10 +9,10 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link nav1" id="home-tab" (click)="changeForm('user')"  data-toggle="tab" data-target="#home" role="tab" aria-controls="home" aria-selected="true">User</a>
+                    <a class="nav-link nav1" id="home-tab" (click)="changeForm('user')"  data-toggle="tab" data-target="#home" role="tab" aria-controls="home">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav2" id="profile-tab" (click)="changeForm('professor')"  data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false">Professor</a>
+                    <a class="nav-link nav2" id="profile-tab" (click)="changeForm('professor')"  data-toggle="tab" role="tab" aria-controls="profile">Professor</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -55,16 +55,18 @@
                                 <div *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
                                   <small class="text-danger" *ngIf="userpassword.errors.required"><b>required field</b></small>
                                 </div>
-                                <small style="color: gray; font-size: 9px;">At least one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
+                                <small class="text-danger" *ngIf="wrongPassword(userpassword.value)">At least one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control"  placeholder="Confirm Password *" name="ConfirmPassword" (ngModel)="user.password" required 
                                 #userconfirmPassword="ngModel"
                                 [class.is-invalid]="userconfirmPassword.invalid && userconfirmPassword.touched">
-                                <div style="margin-top: -4%; margin-bottom: 3%;" *ngIf="userconfirmPassword.valid || userconfirmPassword.touched">
-                                    <small class="text-danger" *ngIf="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.touched"><b>password not matched</b></small>
+                                <div *ngIf="userconfirmPassword.errors && userconfirmPassword.invalid && userconfirmPassword.touched">
+                                    <small class="text-danger" *ngIf="userconfirmPassword.errors.required"><b>required field</b></small>
                                 </div>
-                                <small class="text-danger" [class.d-none]="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.untouched"><b>password not matched</b></small>
+                                <div *ngIf="userconfirmPassword.value !== userpassword.value && userconfirmPassword.touched">
+                                    <small class="text-danger"><b>passwords don't match</b></small>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -148,13 +150,18 @@
                                 <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
                                   <small class="text-danger" *ngIf="professorpassword.errors.required"><b>required field</b></small>
                                 </div>
-                                <small style="color: gray; font-size: 9px;">At least one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
+                                <small class="text-danger" *ngIf="wrongPassword(professorpassword.value)">At least one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Confirm password *" name="ConfirmPassword" (ngModel)="professor.password" required 
                                 #professorconfirmPassword="ngModel"
                                 [class.is-invalid]="professorconfirmPassword.invalid && professorconfirmPassword.touched">
-                                <small class="text-danger" [class.d-none]="(professorconfirmPassword.value == professorpassword.value) || professorconfirmPassword.untouched"><b>password not matched</b></small>
+                                <div *ngIf="professorconfirmPassword.errors && professorconfirmPassword.invalid && professorconfirmPassword.touched">
+                                    <small class="text-danger" *ngIf="professorconfirmPassword.errors.required"><b>required field</b></small>
+                                </div>
+                                <div *ngIf="professorconfirmPassword.value !== professorpassword.value && professorconfirmPassword.touched">
+                                    <small class="text-danger"><b>passwords don't match</b></small>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -184,7 +191,7 @@
                                 #department="ngModel"
                                 [class.is-invalid]="department.invalid && department.touched">
                                 <option disabled selected value="">Department *</option>
-                                <option value="Computer Science">Computer Science"</option>
+                                <option value="Computer Science">Computer Science</option>
                                 <option value="Physics">Physics</option>
                                 <option value="Chemistry">Chemistry</option>
                                 <option value="Mathematics">Mathematics</option>

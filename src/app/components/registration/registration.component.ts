@@ -42,6 +42,8 @@ export class RegistrationComponent implements OnInit {
     }
     if(this.paramName == "professor") {
       $(".nav2").addClass("highlight1")
+      $("#profile").show();
+      $("#home").hide();
       $("#home-tab").click(function(){
         $("#profile").hide();
         $("#home").show();
@@ -92,5 +94,22 @@ export class RegistrationComponent implements OnInit {
   changeForm(paramName: string)
   {
     this._router.navigate(['/registration', paramName]);
+  }
+
+  wrongPassword(password : string) {
+    if (
+      password.length >= 6 &&
+      password.length <= 20 &&
+      /[A-Z]/.test(password) &&        // At least one uppercase letter
+      /[a-z]/.test(password) &&        // At least one lowercase letter
+      /[0-9]/.test(password) &&        // At least one numeric digit
+      /[!@#$%^&*()_+{}\[\]:;<>,.?~\-]/.test(password)  // At least one special character
+    ) {
+      // Password meets all criteria
+      return false;
+    } else {
+      // Password does not meet all criteria
+      return true;
+    }
   }
 }

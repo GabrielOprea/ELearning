@@ -2,8 +2,8 @@
 
 .register{
     background: white;
-    margin-top: 0.8%;
-    margin-bottom: 3%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     border-radius: 15px;
     padding: 3%;
 }
@@ -50,7 +50,7 @@
 .loginbtn:hover{
     cursor: pointer;
     background: #ffffff;
-    color: #0a3d3b;
+    color:  #440707;;
 }
 .btnRegister:hover{
     background: #440707;
@@ -164,7 +164,7 @@ color: white;
 padding: 5px 20px 5px 20px;
 margin-top: 5%;
 margin-bottom: 1%;
-background-color: #13534e;
+background-color: #440707;
 }
 .editbtn:hover{
 cursor: pointer;
@@ -177,5 +177,6 @@ align-content: center;
 #profilecard
 {
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: 10%;
+	margin-bottom: 10%;
 }
