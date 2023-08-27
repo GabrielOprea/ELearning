@@ -15,8 +15,9 @@
         </div>
        <div class="switchs">
         <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+        <button *ngIf= "loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
         <button *ngIf="_router.url == '/'" style="font-weight: bold;" class="log-current" id="log-current" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
-        <div class="dropdown" *ngIf="!_router.url.startsWith('/login')">
+        <div class="dropdown" *ngIf="!_router.url.startsWith('/login') && loggedUser === ''">
           <button  *ngIf="!_router.url.startsWith('/login')" style="font-weight: bold;" class="log" id="log"><i class="fa fa-sign-in"></i> Login</button>
 
           <div class="dropdown-content">
@@ -42,7 +43,7 @@
         </div>
         <button  *ngIf="_router.url.startsWith('/login')" style="font-weight: bold;" class="log-current" id="log-current"><i class="fa fa-sign-in"></i> Login</button>
 
-        <div class="dropdown"  *ngIf="!_router.url.startsWith('/registration')">
+        <div class="dropdown"  *ngIf="!_router.url.startsWith('/registration')  && loggedUser === ''">
           <button  *ngIf="!_router.url.startsWith('/registration')" style="font-weight: bold;" class="log" id="log"><i class="fa fa-user-plus"></i>  Sign Up</button>
           <div class="dropdown-content">
             <div class="detail" (click)="registration('professor')" style="background-color: rgb(146, 107, 146);">
