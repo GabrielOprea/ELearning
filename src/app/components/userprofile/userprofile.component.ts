@@ -50,7 +50,7 @@ export class UserprofileComponent implements OnInit {
     this._service.UpdateUserProfile(this.user).subscribe(
       data => {
         console.log("UserProfile Updated succesfully");
-        this.msg = "Profile Updated Successfully !!!";
+        this.msg = "Profile Updated Successfully!";
         $(".editbtn").hide();
         $("#message").show();
         this.temp = true;
@@ -63,7 +63,7 @@ export class UserprofileComponent implements OnInit {
       error => {
         console.log("Profile Updation Failed");
         console.log(error.error);
-        this.msg = "Profile Updation Failed !!!";
+        this.msg = "Profile Updation Failed !";
       }
     )
   }
