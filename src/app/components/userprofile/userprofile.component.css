@@ -2,8 +2,8 @@
 
 .register{
     background: white;
-    margin-top: 0.8%;
-    margin-bottom: 3%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     border-radius: 15px;
     padding: 3%;
 }
@@ -50,7 +50,7 @@
 .loginbtn:hover{
     cursor: pointer;
     background: #ffffff;
-    color: #0a3d3b;
+    color:  #440707;;
 }
 .btnRegister:hover{
     background: #440707;
@@ -134,14 +134,10 @@ label{
   padding-left: 2%;
   box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
 }
-#bloodCards:hover
-{
-  transform: scale(1.05);
-  cursor: pointer;
-}
+
 .bloodimg
 {
-  float: right;
+  float: left;
   margin-top: 3%;
   margin-right: 3%;
 }
@@ -152,8 +148,7 @@ margin-bottom: 3%;
 }
 .text{
   font-family: verdana;
-  font-size: medium;
-  font-weight: 400; 
+  font-size: 14px;
   margin-top: 1.5%;
 }
 .editbtn
@@ -164,18 +159,30 @@ color: white;
 padding: 5px 20px 5px 20px;
 margin-top: 5%;
 margin-bottom: 1%;
-background-color: #13534e;
+background-color: #440707;
 }
 .editbtn:hover{
 cursor: pointer;
 }
 
 .btndiv{
-margin-left: 40%;
-align-content: center;
+align-content: left;
 }
 #profilecard
 {
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

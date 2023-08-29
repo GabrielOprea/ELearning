@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Professor } from '../models/professor';
 import { User } from '../models/user';
 import { map } from "rxjs/operators";
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 const NAV_URL = environment.apiURL;
 

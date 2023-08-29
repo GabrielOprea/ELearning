@@ -1,6 +1,71 @@
-<div class="sidebar-logo">
+<!-- <div class="sidebar-logo">
     <div class="welcometxt" style="float: left;"><b style="color: white;">{{title}}</b></div>
     <button class="logoutbtn" style="margin-right: 1%;" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
     <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
     <button class="logoutbtn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-</div>
+</div> -->
+
+<div class="content">
+    <div class="header" id="header">
+      <div class="nav">
+        <div class="logo">
+          <img src="https://elearningindustry.com/wp-content/uploads/2016/08/organization-ready-for-elearning.png" style="border-radius: 50%; background-color: white;" width="50" height="40">
+          <h4 style="margin-left: 3%; margin-top: 1%; font-family: 'Aladin', cursive; color: rgb(248, 247, 247);">E-Learning Management System</h4><br>
+
+        </div>
+       <div class="switchs">
+        <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+        <button *ngIf="_router.url == '/'" style="font-weight: bold;" class="log-current" id="log-current" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
+
+        <button *ngIf="_router.url !== '/userdashboard' && _router.url !== '/professordashboard' && _router.url !== '/admindashboard' && loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click) = "navigateHome()"><i class="fa fa-th"></i> Dashboard</button>
+        <button *ngIf="(_router.url == '/userdashboard' || _router.url == '/professordashboard' || _router.url == '/admindashboard') && loggedUser !== ''" style="font-weight: bold;" class="log-current" id="log-current" (click) = "navigateHome()"><i class="fa fa-th"></i> Dashboard</button>
+
+        <button *ngIf= "loggedUser !== ''" style="font-weight: bold;" class="log" id="log" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
+        <div class="dropdown" *ngIf="!_router.url.startsWith('/login') && loggedUser === ''">
+          <button  *ngIf="!_router.url.startsWith('/login')" style="font-weight: bold;" class="log" id="log"><i class="fa fa-sign-in"></i> Login</button>
+
+          <div class="dropdown-content">
+            <div class="detail" (click)="login('admin')" style="background-color: rgb(146, 107, 146);">
+                <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Admin </h4>
+                <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                    <img src="https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg" width="30" height="30">
+                </div>
+            </div>
+            <div class="detail" (click)="login('professor')" style="background-color: rgb(146, 107, 146);">
+              <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Professor </h4>
+              <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                  <img src="https://cdn1.iconfinder.com/data/icons/flat-education-icons-1/512/37-512.png" width="30" height="30">
+              </div>
+          </div>
+          <div class="detail" (click)="login('user')" style="background-color: rgb(146, 107, 146);">
+            <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> User </h4>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                <img src="https://cdn-icons-png.flaticon.com/256/666/666201.png" width="30" height="30">
+            </div>
+          </div>
+          </div>
+        </div>
+        <button  *ngIf="_router.url.startsWith('/login')" style="font-weight: bold;" class="log-current" id="log-current"><i class="fa fa-sign-in"></i> Login</button>
+
+        <div class="dropdown"  *ngIf="!_router.url.startsWith('/registration')  && loggedUser === ''">
+          <button  *ngIf="!_router.url.startsWith('/registration')" style="font-weight: bold;" class="log" id="log"><i class="fa fa-user-plus"></i>  Sign Up</button>
+          <div class="dropdown-content">
+            <div class="detail" (click)="registration('professor')" style="background-color: rgb(146, 107, 146);">
+              <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> Professor </h4>
+              <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                  <img src="https://cdn1.iconfinder.com/data/icons/flat-education-icons-1/512/37-512.png" width="30" height="30">
+              </div>
+          </div>
+          <div class="detail" (click)="registration('user')" style="background-color: rgb(146, 107, 146);">
+            <h4 style="font-family: monospace; font-size: 16px; margin-top: 5%; color: white;"> User </h4>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+                <img src="https://cdn-icons-png.flaticon.com/256/666/666201.png" width="30" height="30">
+            </div>
+          </div>
+          </div>
+        </div>
+        <button  *ngIf="_router.url.startsWith('/registration')" style="font-weight: bold;" class="log-current" id="log-current"><i class="fa fa-user-plus"></i> Sign Up</button>
+      </div>
+    </div>
+  <br>
+  </div>

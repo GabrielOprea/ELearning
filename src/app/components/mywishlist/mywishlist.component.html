@@ -1,7 +1,5 @@
-<app-header></app-header>
-
-<div *ngIf="currRole === 'user'" class="heading-text" style="color: darkgreen;"><b><i style="color: darkred;" class="fa fa-heart"></i> User WishList</b></div>
-<div *ngIf="currRole === 'professor'" class="heading-text" style="color: darkgreen;"><b><i style="color: darkred;" class="fa fa-heart"></i> Professor WishList</b></div>
+<div *ngIf="currRole === 'user'" class="heading-text" style="color: #440707; margin-top: 10%; margin-bottom: 10%;"><b><i style="color: #440707;" class="fa fa-heart"></i> User WishList</b></div>
+<div *ngIf="currRole === 'professor'" class="heading-text" style="color: #440707; margin-top: 10%; margin-bottom: 10%;"><b><i style="color: #440707;" class="fa fa-heart"></i> Professor WishList</b></div>
 <div class="row">
     <div  *ngFor="let course of wishlist | async" class="col-4 card" id="bloodCards">
         <div class="img-block">
@@ -25,4 +23,3 @@
   </div>
 
 <br><br><br>
-<app-footer></app-footer>

@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   currRole = '';
   title = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private _router : Router) { }
+  constructor(private activatedRoute: ActivatedRoute, public _router : Router) { }
 
   ngOnInit(): void 
   {
@@ -36,11 +36,14 @@ export class HeaderComponent implements OnInit {
   logout()
   {
     sessionStorage.clear();
-    this._router.navigate(['/login']);
+    this._router.navigate(['/']);
+    this.loggedUser = '';
   }
 
   navigateHome()
   {
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = this.currRole.replace(/"/g, '');
     if(this.loggedUser === "admin@gmail.com"){
       this._router.navigate(['/admindashboard']);
     }
@@ -52,5 +55,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  login(paramName: string)
+  {
+    this._router.navigate(['/login', paramName]);
+  }
 
+  registration(paramName: string)
+  {
+    this._router.navigate(['/registration', paramName]);
+  }
 }
