@@ -22,14 +22,10 @@
             </div>
             <p class="card-text"><br><b
                 style="color: darkblue; font-size: large; margin-bottom: 1%;">{{data.description}}</b></p>
-            <!--<a [href]="data.websiteurl" style="margin-right: 8%; margin-left: 4%" class="btn btn-primary">Enroll Now</a>-->
             <a (click)="getcoursedetails(data.coursename)" style="margin-left: auto; margin-right: auto; border: none;"
               class="btn btn-primary">More Info</a>
           </div>
         </ng-template>
-        <!--<ng-template carouselSlide [id]="data.id">
-        <img [src]="data.src" [alt]="data.alt" [title]="data.title">
-      </ng-template>-->
       </ng-container>
     </ng-container>
   </owl-carousel-o>

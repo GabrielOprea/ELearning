@@ -26,8 +26,8 @@
     border: none;
     border-radius: 1.5rem;
     padding: 1%;
-    border: 1px solid #440707;
-    color: #440707;
+    border: 1px solid rgb(37, 7, 7);
+    color: rgb(37, 7, 7);
     font-weight: 600;
     font-size: 20px;
     width: 30%;
@@ -50,10 +50,10 @@
 .loginbtn:hover{
     cursor: pointer;
     background: #ffffff;
-    color:  #440707;;
+    color:  rgb(37, 7, 7);
 }
 .btnRegister:hover{
-    background: #440707;
+    background: rgb(93, 7, 93);
     color: #fff;
     cursor: pointer;
 }
@@ -86,10 +86,10 @@ input{
 }
 .textual
 {
-  color: maroon; 
+  color: rgb(93, 7, 93);
   text-align: center; 
   margin-top: 2%;
-  font-family: 'Aladin', sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   padding: 5px;
   font-weight: bolder;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ label{
 }
 .registerbtn:hover
 {
-  background-color: rgb(23, 78, 78);
+  background-color: rgb(93, 7, 93);
   padding-left: 7%;
   padding-right: 7%;
   cursor: pointer;
@@ -159,7 +159,7 @@ color: white;
 padding: 5px 20px 5px 20px;
 margin-top: 5%;
 margin-bottom: 1%;
-background-color: #440707;
+background-color: rgb(93, 7, 93);
 }
 .editbtn:hover{
 cursor: pointer;

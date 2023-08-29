@@ -53,10 +53,10 @@ export class HeaderComponent implements OnInit {
       this._router.navigate(['/admindashboard']);
     }
     else if(this.currRole === "professor"){
-      this._router.navigate(['/professordashboard']);
+      this._router.navigate(['/dashboard']);
     }
     else if(this.currRole === "user"){
-      this._router.navigate(['/userdashboard']);
+      this._router.navigate(['/dashboard']);
     }
   }
 

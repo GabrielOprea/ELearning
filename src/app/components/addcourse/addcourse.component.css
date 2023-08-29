@@ -53,7 +53,7 @@
     color: #0a3d3b;
 }
 .btnRegister:hover{
-    background: #440707;
+    background: rgb(37, 7, 7);
     color: #fff;
     cursor: pointer;
 }
@@ -87,7 +87,7 @@
     width: 100px;
     color: #fdfdfd;
     background-color: #f14747;
-    border: 2px solid #440707;
+    border: 2px solid rgb(37, 7, 7);
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
@@ -102,7 +102,7 @@
     letter-spacing: 1.5px;
     margin-bottom: -15%;
     font-family: 'Aladin', cursive;
-    color: #413613;
+    color: rgb(37, 7, 7);
 }
 #home-tab
 {

@@ -1,18 +1,17 @@
-<app-header></app-header>
 
-<div class="panel panel-primary" id="professorapproval">
+<div class="panel panel-primary" style="margin-top: 10%;" id="professorapproval">
     <div class="panel-heading">
-      <h2 *ngIf="currRole === 'professor' || currRole === 'PROFESSOR'" style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 4%;"> Your Approval Status 
-        <div *ngFor="let professor of approval | async" style="margin-top: 1%;">
-            <div *ngIf="professor.status === 'accept'"><h2><small style="color: green;">(Verified & Accepted) ID : <small class="date-cover">{{professor.professorid}}</small></small></h2></div>
-            <div *ngIf="professor.status === 'false'"><h2><small style="color: rgb(161, 106, 34);">(Not yet Verified)</small></h2></div>
-            <div *ngIf="professor.status === 'reject'"><h2><small style="color: rgb(184, 36, 36);">(Verified & Rejected)</small></h2></div>
+      <h2 *ngIf="currRole === 'professor' || currRole === 'PROFESSOR'" style="text-align: center; font-family: 'Oswald', sans-serif;color: rgb(37, 3, 37);; margin-bottom: 4%;"> Your Approval Status: 
+        <div *ngFor="let professor of approval | async">
+            <div *ngIf="professor.status === 'accept'"><h4><small style="color: green;">Verified & Accepted</small></h4></div>
+            <div *ngIf="professor.status === 'false'"><h4><small style="color: rgb(161, 106, 34);">Not yet Verified</small></h4></div>
+            <div *ngIf="professor.status === 'reject'"><h4><small style="color: rgb(184, 36, 36);">Verified & Rejected</small></h4></div>
         </div>
       </h2>
     </div>
-    <div class="panel-body">
-      <table cass="table table-bordered">
-        <thead class="headercolor">
+
+      <table  class="container">
+        <thead>
           <tr>
             <th>Idendity</th>
             <th>Name</th>
@@ -27,9 +26,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let professor of approval | async">
-            <td><img *ngIf="professor.gender === 'Male' || professor.gender === 'male'" class="bloodimg" [src]="'assets/img/maleprofessor.png'" width="80" height="80">
-              <img *ngIf="professor.gender === 'Female' || professor.gender === 'female'" class="bloodimg" [src]="'assets/img/femaleprofessor.png'" width="80" height="80">
-              </td>
+            <td>{{professor.professorid}}</td>
             <td>{{professor.professorname}}</td>
             <td>{{professor.email}}</td>
             <td>{{professor.degreecompleted}}</td>
@@ -39,16 +36,20 @@
             <td>{{professor.mobile}}</td>
             <td>
                 <div *ngIf="currRole === 'professor' || currRole === 'PROFESSOR' && professor.email === loggedUser">
-                    <div *ngIf="professor.status === 'accept'" class="accepted">Accepted</div>
+                    <!-- <div *ngIf="professor.status === 'accept'" class="accepted">Accepted</div>
                     <div *ngIf="professor.status === 'false'" class="pending">Pending</div>
-                    <div *ngIf="professor.status === 'reject'" class="rejected">Rejected</div>
+                    <div *ngIf="professor.status === 'reject'" class="rejected">Rejected</div> -->
+
+                    <div *ngIf="professor.status === 'accept'">Accepted</div>
+                    <div *ngIf="professor.status === 'false'">Pending</div>
+                    <div *ngIf="professor.status === 'reject'">Rejected</div>
                 </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-</div>
+
 
 <div class="panel panel-primary" id="adminapproval">
     <div class="panel-heading">
@@ -104,4 +105,3 @@
 </div>
 
 <br><br><br>
-<app-footer></app-footer>

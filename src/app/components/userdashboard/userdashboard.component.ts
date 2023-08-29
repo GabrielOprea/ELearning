@@ -11,7 +11,6 @@ export class UserdashboardComponent implements OnInit {
 
   loggedUser = '';
   name = '';
-  currRole = '';
   courses : Observable<any[]> | undefined;
   enrollments : Observable<any[]> | undefined;
   enrollmentcount : Observable<any[]> | undefined;
@@ -22,15 +21,13 @@ export class UserdashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
-
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
-    this.loggedUser = this.loggedUser.replace(/"/g, '');
+    console.log("hee");
 
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
 
     this.name = JSON.stringify(sessionStorage.getItem('name')|| '{}'); 
-    this.name = this.currRole.replace(/"/g, '');
+    this.name = this.name.replace(/"/g, '');
 
     $("#btn").click(function(){
       $(".sidebar").toggleClass("open");
