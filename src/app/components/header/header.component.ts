@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   loggedUser = '';
   currRole = '';
   title = '';
+  shown = false;
 
   constructor(private activatedRoute: ActivatedRoute, public _router : Router) { }
 
@@ -18,7 +19,9 @@ export class HeaderComponent implements OnInit {
   {
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
-
+    if(this.loggedUser === '{}') {
+      this.loggedUser = '';
+    }
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
 
@@ -31,6 +34,8 @@ export class HeaderComponent implements OnInit {
     else if(this.currRole === "user"){
       this.title = "";
     }
+
+    $(".sidebar").hide();
   }
 
   logout()
@@ -63,5 +68,14 @@ export class HeaderComponent implements OnInit {
   registration(paramName: string)
   {
     this._router.navigate(['/registration', paramName]);
+  }
+
+  showMenu() {
+    if(!this.shown) {
+     $(".sidebar").show();
+    } else {
+      $(".sidebar").hide();
+    }
+    this.shown = !this.shown;
   }
 }

@@ -1,17 +1,11 @@
-<!-- <div class="sidebar-logo">
-    <div class="welcometxt" style="float: left;"><b style="color: white;">{{title}}</b></div>
-    <button class="logoutbtn" style="margin-right: 1%;" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
-    <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
-    <button class="logoutbtn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-</div> -->
 
 <div class="content">
     <div class="header" id="header">
       <div class="nav">
         <div class="logo">
+          <button class='fa fa-bars display-sidebar' *ngIf="loggedUser !== ''" (click)="showMenu()"></button>
           <img src="https://elearningindustry.com/wp-content/uploads/2016/08/organization-ready-for-elearning.png" style="border-radius: 50%; background-color: white;" width="50" height="40">
           <h4 style="margin-left: 3%; margin-top: 1%; font-family: 'Aladin', cursive; color: rgb(248, 247, 247);">E-Learning Management System</h4><br>
-
         </div>
        <div class="switchs">
         <button *ngIf="_router.url !== '/'" style="font-weight: bold;" class="log" id="log" [routerLink]="['']"><i class="fa fa-home"></i> Home</button>
@@ -68,4 +62,81 @@
       </div>
     </div>
   <br>
+  </div>
+</div>
+  <div class="sidebar">
+    <ul class="nav-list">
+      <li [routerLink]="['/edituserprofile']" *ngIf="_router.url.startsWith('/edituserprofile')" class="li-current">
+        <a>
+          <i class='fa fa-edit'></i>
+          <span class="links_name">Edit Profile</span>
+        </a>
+      </li>
+      <li [routerLink]="['/edituserprofile']" *ngIf="!_router.url.startsWith('/edituserprofile')">
+        <a>
+          <i class='fa fa-edit'></i>
+          <span class="links_name">Edit Profile</span>
+        </a>
+      </li>
+     <li [routerLink]="['/mycourses']" *ngIf="_router.url.startsWith('/mycourses')" class="li-current">
+        <a>
+          <i class='fa fa-graduation-cap' ></i>
+          <span class="links_name">My Learning</span>
+        </a>
+      </li>
+      <li [routerLink]="['/mycourses']" *ngIf="!_router.url.startsWith('/mycourses')">
+        <a>
+          <i class='fa fa-graduation-cap' ></i>
+          <span class="links_name">My Learning</span>
+        </a>
+      </li>
+      <li [routerLink]="['/mywishlist']" *ngIf="_router.url.startsWith('/mywishlist')" class="li-current">
+        <a>
+          <i class='fa fa-heart' ></i>
+          <span class="links_name">Favourites</span>
+        </a>
+      </li>
+      <li [routerLink]="['/mywishlist']" *ngIf="!_router.url.startsWith('/mywishlist')">
+        <a>
+          <i class='fa fa-heart' ></i>
+          <span class="links_name">Favourites</span>
+        </a>
+      </li>
+     <li [routerLink]="['/courselist']" *ngIf="_router.url.startsWith('/courselist')" class="li-current">
+       <a>
+         <i class='fa fa-list' ></i>
+         <span class="links_name">Courses</span>
+       </a>
+     </li>
+     <li [routerLink]="['/courselist']" *ngIf="!_router.url.startsWith('/courselist')">
+      <a>
+        <i class='fa fa-list' ></i>
+        <span class="links_name">Courses</span>
+      </a>
+    </li>
+     <li [routerLink]="['/professorlist']" *ngIf="_router.url.startsWith('/professorlist')" class="li-current">
+       <a>
+         <i class='fa fa-user-o' ></i>
+         <span class="links_name">Professors</span>
+       </a>
+     </li>
+     <li [routerLink]="['/professorlist']" *ngIf="!_router.url.startsWith('/professorlist')">
+      <a>
+        <i class='fa fa-user-o' ></i>
+        <span class="links_name">Professors</span>
+      </a>
+    </li>
+     <li [routerLink]="['/userlist']" *ngIf="_router.url.startsWith('/userlist')" class="li-current">
+       <a>
+         <i class='fa fa-user' ></i>
+         <span class="links_name">Users</span>
+       </a>
+     </li>
+     <li [routerLink]="['/userlist']" *ngIf="!_router.url.startsWith('/userlist')">
+      <a>
+        <i class='fa fa-user' ></i>
+        <span class="links_name">Users</span>
+      </a>
+    </li>
+    </ul>
   </div>
