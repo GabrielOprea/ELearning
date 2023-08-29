@@ -2,8 +2,8 @@
 
 .register{
     background: white;
-    margin-top: 0.8%;
-    margin-bottom: 3%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     border-radius: 15px;
     padding: 3%;
 }
@@ -26,8 +26,8 @@
     border: none;
     border-radius: 1.5rem;
     padding: 1%;
-    border: 1px solid #440707;
-    color: #440707;
+    border: 1px solid rgb(37, 7, 7);
+    color: rgb(37, 7, 7);
     font-weight: 600;
     font-size: 20px;
     width: 30%;
@@ -50,10 +50,10 @@
 .loginbtn:hover{
     cursor: pointer;
     background: #ffffff;
-    color: #0a3d3b;
+    color:  rgb(37, 7, 7);
 }
 .btnRegister:hover{
-    background: #440707;
+    background: rgb(93, 7, 93);
     color: #fff;
     cursor: pointer;
 }
@@ -86,10 +86,10 @@ input{
 }
 .textual
 {
-  color: maroon; 
+  color: rgb(93, 7, 93);
   text-align: center; 
   margin-top: 2%;
-  font-family: 'Aladin', sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   padding: 5px;
   font-weight: bolder;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ label{
 }
 .registerbtn:hover
 {
-  background-color: rgb(23, 78, 78);
+  background-color: rgb(93, 7, 93);
   padding-left: 7%;
   padding-right: 7%;
   cursor: pointer;
@@ -128,20 +128,16 @@ label{
 {
   margin-right: 5%;
   margin-bottom: 15%;
-  width: 55%;
+  width: 50%;
   border-radius: 10px;
   transition: transform .2s;
   padding-left: 2%;
   box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
 }
-#bloodCards:hover
-{
-  transform: scale(1.05);
-  cursor: pointer;
-}
+
 .bloodimg
 {
-  float: right;
+  float: left;
   margin-top: 3%;
   margin-right: 3%;
 }
@@ -151,10 +147,9 @@ margin-top: 3%;
 margin-bottom: 3%;
 }
 .text{
-font-family: verdana;
-font-size: medium;
-font-weight: 400; 
-margin-top: 1.5%;
+  font-family: verdana;
+  font-size: 14px;
+  margin-top: 1.5%;
 }
 .editbtn
 {
@@ -164,18 +159,30 @@ color: white;
 padding: 5px 20px 5px 20px;
 margin-top: 5%;
 margin-bottom: 1%;
-background-color: #13534e;
+background-color: rgb(93, 7, 93);
 }
 .editbtn:hover{
 cursor: pointer;
 }
 
 .btndiv{
-margin-left: 40%;
-align-content: center;
+align-content: left;
 }
 #profilecard
 {
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

@@ -15,8 +15,7 @@ export class RouterGuard
     if (this._service.isUserLoggedIn()) {
       return true;
     }
-    this.router.navigate(['login']);
-    return false;
+        return false;
   }
   
 }

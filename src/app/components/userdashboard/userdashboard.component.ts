@@ -10,23 +10,24 @@ import { AdminService } from 'src/app/services/admin.service';
 export class UserdashboardComponent implements OnInit {
 
   loggedUser = '';
-  currRole = '';
+  name = '';
   courses : Observable<any[]> | undefined;
   enrollments : Observable<any[]> | undefined;
   enrollmentcount : Observable<any[]> | undefined;
   wishlist : Observable<any[]> | undefined;
-  chapters : Observable<any[]> | undefined;
+  professors : Observable<any[]> | undefined;
   
   constructor(private _service : AdminService) {}
 
   ngOnInit(): void 
   {
+    console.log("hee");
 
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
-    this.currRole = this.currRole.replace(/"/g, '');
+    this.name = JSON.stringify(sessionStorage.getItem('name')|| '{}'); 
+    this.name = this.name.replace(/"/g, '');
 
     $("#btn").click(function(){
       $(".sidebar").toggleClass("open");
@@ -50,7 +51,7 @@ export class UserdashboardComponent implements OnInit {
     this.enrollments = this._service.getTotalEnrollments();
     this.enrollmentcount = this._service.getTotalEnrollmentCount();
     this.wishlist = this._service.getTotalWishlist();
-    this.chapters = this._service.getTotalChapters();
+    this.professors = this._service.getTotalProfessors();
 
   }
 

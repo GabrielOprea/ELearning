@@ -101,8 +101,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('loggedUser', this.user.email);
           sessionStorage.setItem('USER', "user");
           sessionStorage.setItem('ROLE', "user");
-          sessionStorage.setItem('name', data.name);
-          this._router.navigate(['/userdashboard']);
+          sessionStorage.setItem('name', data.username);
+          this._router.navigate(['/dashboard']);
         },
         (error: { error: any; }) => {
           console.log(error.error);
@@ -122,8 +122,8 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('USER', "professor");
           sessionStorage.setItem('ROLE', "professor");
           sessionStorage.setItem('professorname',this.professor.email);
-          sessionStorage.setItem('name', data.name);
-          this._router.navigate(['/professordashboard']);
+          sessionStorage.setItem('name', data.professorname);
+          this._router.navigate(['/dashboard']);
         },
         (error: { error: any; }) => {
           console.log(error.error);
