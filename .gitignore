@@ -23,7 +23,8 @@ chrome-profiler-events*.json
 *.sublime-workspace
 *.pack
 *.pack.old
-
+.angular/cache/16.2.0/babel-webpack/*
+ELearningManagement - backend/uploads/*
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
