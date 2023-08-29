@@ -13,6 +13,25 @@ public class Quiz {
   private String passingpercent;
   private String courseid;
   private String quizname;
+  private String quizid;
+
+  public Quiz(int id, String noquestions, String passingpercent, String courseid, String quizname, String quizid) {
+    this.id = id;
+    this.noquestions = noquestions;
+    this.passingpercent = passingpercent;
+    this.courseid = courseid;
+    this.quizname = quizname;
+    this.quizid = quizid;
+  }
+
+  public String getQuizid() {
+    return quizid;
+  }
+
+  public void setQuizid(String quizid) {
+    this.quizid = quizid;
+  }
+
   public Quiz() {
   }
 

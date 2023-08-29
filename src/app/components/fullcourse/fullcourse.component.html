@@ -2,8 +2,14 @@
 <div class="continer">
     <div>
     <div style="font-weight: bolder; color: darkgreen; font-size: 35px; margin-bottom: 2%;">Welcome to {{courseName}} course 👋 </div>
-    <youtube-player style="margin-right: 5%;" id="player" [videoId]="video" suggestedQuality="highres" [height]="380" [width]="640"></youtube-player>
-    <div class="chapter-list" *ngFor="let chapter of chapterlist | async">
+    <div class="row">
+        <div class="col-md-8">
+            <youtube-player style="margin-right: 5%;" id="player" [videoId]="video" suggestedQuality="highres" [height]="380" [width]="640"></youtube-player>
+            
+        </div>
+        <div class="col-md-8">
+            
+    <div class="chapter-list" *ngFor="let chapter of chapterlist">
         <div style="font-weight: bold; font-size: large; align-items: center; color: darkred;"><i class="fa fa-list"></i> Course Contents</div>
         <div style="color: gray; font-weight: 400; font-size: small; margin-bottom: 5%;">(click on chapter name to get into the videos)</div>
         <div style="color: red; font-size: medium; font-weight: bolder; margin-top: 30%; margin-left: 5%; margin-right: 5%;" *ngIf="chapter.chapter1name === ''">Currently No Chapters available for this Course. Please wait, the Instructor will be adding the chapters soon here</div>
@@ -64,10 +70,14 @@
         </div>
         <hr *ngIf="chapter.chapter8name !== ''">
     </div>
+
+    </div>
+
+    </div> 
 </div>
 <div class="sub-container">
     <div class="sub-btns">
-        <button id="overview-btn" (click)="openOverview()" class="btn btn-info">Overview</button>
+        <button id="overview-btn" (click)="openOverview(); ceva()" class="btn btn-info">Overview</button>
         <button id="qa-btn" (click)="openQandA()" class="btn btn-info">Q&A</button>
         <button id="downloads-btn" (click)="openDownloads()" class="btn btn-info">Downloads</button>
         <button id="notes-btn" (click)="openNotes()" class="btn btn-info">Notes</button>
@@ -111,7 +121,7 @@
         <strong id="newQA" (click)="newQuestion()" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">Ask a New Question ?</strong>
         <textarea type="text" id="questions" rows = "4" class="form-control" placeholder="ask your questions here..."></textarea>
     </div>
-    <div id="downloads" *ngFor="let chapter of chapterlist | async" style="padding-bottom: 5%;" class="descriptions">
+    <div id="downloads" *ngFor="let chapter of chapterlist" style="padding-bottom: 5%;" class="descriptions">
         <div id="downloadalert" style="color: darkred; font-size: larger; display: none; font-weight: bolder; margin-top: 5%; margin-bottom: 5%; margin-right: 10%;" *ngIf="chapter.chapter1name === ''">Currently No Resources available for download. Please wait, the Instructor will be adding the Resources while adding the chapters soon here</div>
         <div *ngIf="chapter.chapter1name !== ''">
           <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">View and download your course related materials here ...</strong>

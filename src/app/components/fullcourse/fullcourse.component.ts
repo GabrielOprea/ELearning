@@ -18,7 +18,7 @@ export class FullcourseComponent implements OnInit {
 
   video = 'P2wNzig_SLA';
   courseName = 'springboot';
-  chapterlist : Observable<Chapter[]> | undefined;
+  chapterlist :Chapter[] | undefined
   courselist : Observable<Course[]> | undefined;
   chapter = new Chapter();
 
@@ -39,11 +39,23 @@ export class FullcourseComponent implements OnInit {
       document.body.appendChild(tag)
     }
 
-    this.chapterlist = this._service.getChappterListByCourseName(this.courseName);
+    this._service.getChappterListByCourseName(this.courseName).subscribe(
+    data => {
+      this.chapterlist = data;
+      console.log("chapter added Successfully !!!");
+    },
+    error => {
+      console.log("chapter adding Failed !!!");
+      console.log(error.error);
+    });
+
     this.courselist = this._service.getCourseListByName(this.courseName);
 
   }
-
+  
+  ceva() {
+    console.log(this.chapterlist)
+  }
   openOverview()
   {
     $("#overview").show();
@@ -142,7 +154,8 @@ export class FullcourseComponent implements OnInit {
 
   openChapter(chapterid : string)
   {
-    this.video = chapterid;
+    console.log(chapterid);
+    this.video = chapterid.split("watch?v=")[1];
   }
 
   isScriptLoaded(target: string): boolean

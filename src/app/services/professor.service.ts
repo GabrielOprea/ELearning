@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Chapter } from '../models/chapter';
 import { Course } from '../models/course';
+import { Quiz } from '../models/quiz';
+import { Question } from '../models/question';
 
 const NAV_URL = environment.apiURL;
 
@@ -47,6 +49,17 @@ export class ProfessorService
   addCourse(course : Course) : Observable<any>
   {
     return this._http.post<any>(`${NAV_URL}/addCourse`,course);
+  }
+
+  addQuiz(quiz : Quiz) : Observable<any>
+  {
+    return this._http.post<any>(`${NAV_URL}/addQuiz`,quiz);
+  }
+
+  
+  addQuestion(question : Question) : Observable<any>
+  {
+    return this._http.post<any>(`${NAV_URL}/addQuestion`,question);
   }
 
   getProfessorListByEmail(email : string) : Observable<any>

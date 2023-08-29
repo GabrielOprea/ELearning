@@ -46,7 +46,8 @@ const routes: Routes = [
   { path: 'edituserprofile', component: UserprofileComponent, canActivate: [UserGuard] },
   { path: 'mywishlist', component: MywishlistComponent, canActivate: [RouterGuard] },
   { path: 'mycourses', component: MycoursesComponent, canActivate: [RouterGuard] },
-  { path: 'quizlist/:courseid', component: QuizlistComponent, canActivate: [RouterGuard] }
+  { path: 'quizlist/:courseid', component: QuizlistComponent, canActivate: [RouterGuard] },
+  { path: 'addquiz/:courseid', component: AddquizComponent, canActivate: [RouterGuard]}
 ];
 
 @NgModule({

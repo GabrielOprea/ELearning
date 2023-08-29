@@ -18,7 +18,6 @@ declare var $: any;
 
 export class CourselistComponent implements OnInit {
 
-  youtubecourselist: Observable<Course[]> | undefined;
   websitecourselist: Observable<Course[]> | undefined;
   courselist: Observable<Course[]> | undefined;
   enrollmentstatus: Observable<any[]> | undefined;
@@ -46,7 +45,6 @@ export class CourselistComponent implements OnInit {
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
     this.currRole = this.currRole.replace(/"/g, '');
 
-    this.youtubecourselist = this.userService.getYoutubeCourseList();
     this.websitecourselist = this.userService.getWebsiteCourseList();
 
     const target = 'https://www.youtube.com/iframe_api'
@@ -57,19 +55,11 @@ export class CourselistComponent implements OnInit {
       document.body.appendChild(tag)
     }
 
-    $("#youtubecoursecard").css('display', 'block');
     $("#websitecoursecard").css('display', 'block');
     $("#likedbtn").hide();
     $("#enrollsuccess").hide();
 
-    $("#youtubecard").click(function () {
-      $("#youtubecoursecard").css('display', 'none');
-      $("#websitecoursecard").css('display', 'none');
-      $("#coursedetailscard").show();
-    });
-
     $("#websitecard").click(function () {
-      $("#youtubecoursecard").css('display', 'none');
       $("#websitecoursecard").css('display', 'none');
       $("#coursedetailscard").show();
     });
@@ -81,7 +71,6 @@ export class CourselistComponent implements OnInit {
   }
 
   getcoursedetails(coursename: string) {
-    $("#youtubecoursecard").css('display', 'none');
     $("#websitecoursecard").css('display', 'none');
     $("#coursedetailscard").show();
     this.courselist = this.userService.getCourseListByName(coursename);
@@ -94,7 +83,6 @@ export class CourselistComponent implements OnInit {
   }
 
   backToCourseList() {
-    $("#youtubecoursecard").css('display', 'block');
     $("#websitecoursecard").css('display', 'block');
     $("#coursedetailscard").hide();
   }
@@ -106,21 +94,18 @@ export class CourselistComponent implements OnInit {
     this.enrollment.instructorname = course.instructorname;
     this.enrollment.instructorinstitution = course.instructorinstitution;
     this.enrollment.enrolledcount = course.enrolledcount;
-    this.enrollment.youtubeurl = course.youtubeurl;
     this.enrollment.websiteurl = course.websiteurl;
     this.enrollment.coursetype = course.coursetype;
     this.enrollment.skilllevel = course.skilllevel;
     this.enrollment.language = course.language;
     this.enrollment.description = course.description;
     this.enrolledID = course.courseid;
-    this.enrolledURL = course.youtubeurl;
     this.enrolledName = course.coursename;
     this.enrolledInstructorName = course.instructorname;
     this.enrolledStatus2 = "enrolled"
     $("#enrollbtn").hide();
     $("#enrolledbtn").show();
     setTimeout(() => {
-      $("#youtubecoursecard").css('display', 'none');
       $("#websitecoursecard").css('display', 'none');
       $("#coursedetailscard").hide();
       $("#enrollsuccess").show();
@@ -167,9 +152,18 @@ export class CourselistComponent implements OnInit {
     this._router.navigate(['/quizlist', courseid])
   }
 
+  gotoContent(courseid: string) {
+
+  }
+
+  gotoTutorials(courseid: string) {
+
+  }
   visitCourse(coursename: string) {
-    if (this.enrolledStatus.slice(0, 1).shift() === "enrolled" || this.enrolledStatus2 === "enrolled")
+    if (this.enrolledStatus.slice(0, 1).shift() === "enrolled" || this.enrolledStatus2 === "enrolled") {
       this._router.navigate(['/fullcourse', coursename]);
+      console.log("tst");
+    }
     else if (this.enrolledStatus.slice(0, 1).shift() === "notenrolled") {
       $("#alertOne").modal('show');
       //window.alert("You have not Enrolled to the course, Please Enroll it to proceed futher !!!");

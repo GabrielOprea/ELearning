@@ -28,7 +28,10 @@ public class ProfessorController
   @Autowired
   private QuizService quizService;
 
-	@Autowired
+  @Autowired
+  private QuestionService questionService;
+
+  @Autowired
 	private ChapterService chapterService;
 
 	@Autowired
@@ -58,7 +61,7 @@ public class ProfessorController
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Course>> getWebsiteCourseList() throws Exception
 	{
-		List<Course> websiteCourseList = courseService.fetchByCoursetype("Website");
+		List<Course> websiteCourseList = courseService.getAllCourses();
 		return new ResponseEntity<List<Course>>(websiteCourseList, HttpStatus.OK);
 	}
 
@@ -113,7 +116,44 @@ public class ProfessorController
 		return courseObj;
 	}
 
-	@PostMapping("/addnewchapter")
+  @PostMapping("/addQuiz")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public Quiz addNewQuiz(@RequestBody Quiz quiz) throws Exception
+  {
+    Quiz quizObj = null;
+    String newID = getNewID();
+    quiz.setQuizid(newID);
+
+    quizObj = quizService.addNewQuiz(quiz);
+    return quizObj;
+  }
+
+  @PostMapping("/thumbnail-upload")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public Quiz addNewFile(@RequestBody Quiz quiz) throws Exception
+  {
+    Quiz quizObj = null;
+    String newID = getNewID();
+    quiz.setQuizid(newID);
+
+    quizObj = quizService.addNewQuiz(quiz);
+    return quizObj;
+  }
+
+  @PostMapping("/addQuestion")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public Question addNewQuiz(@RequestBody Question question) throws Exception
+  {
+    Question questionObj = null;
+    String newID = getNewID();
+    question.setQuestionid(newID);
+
+    questionObj = questionService.addNewQuestion(question);
+    return questionObj;
+  }
+
+
+  @PostMapping("/addnewchapter")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public Chapter addNewChapters(@RequestBody Chapter chapter) throws Exception
 	{

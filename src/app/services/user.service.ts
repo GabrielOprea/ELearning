@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Course } from '../models/course';
 import { Enrollment } from '../models/enrollment';
 import { Wishlist } from '../models/wishlist';
+import { Chapter } from '../models/chapter';
 
 const NAV_URL = environment.apiURL;
 
@@ -21,10 +22,6 @@ export class UserService {
 
   getAllUsers(): Observable<any> {
     return this._http.get<any>(`${NAV_URL}/userlist`);
-  }
-
-  getYoutubeCourseList(): Observable<any> {
-    return this._http.get<any>(`${NAV_URL}/youtubecourselist`);
   }
 
   getWebsiteCourseList(): Observable<any> {
@@ -63,8 +60,8 @@ export class UserService {
     return this._http.get<any>(`${NAV_URL}/getallwishlist`);
   }
 
-  getChappterListByCourseName(coursename: string): Observable<any> {
-    return this._http.get<any>(`${NAV_URL}/getchapterlistbycoursename/` + coursename);
+  getChappterListByCourseName(coursename: string): Observable<Chapter[]> {
+    return this._http.get<Chapter[]>(`${NAV_URL}/getchapterlistbycoursename/` + coursename);
   }
 
   getProfileDetails(loggedUser: string): Observable<any> {

@@ -6,6 +6,7 @@ import { Chapter } from 'src/app/models/chapter';
 import { ProfessorService } from 'src/app/services/professor.service';
 import * as $ from 'jquery';
 import { Course } from 'src/app/models/course';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-addchapter',
@@ -16,8 +17,8 @@ export class AddchapterComponent implements OnInit {
 
   chapter = new Chapter();
   coursenames : Observable<Course[]> | undefined;
-     
-  constructor(private _router : Router, private _service : ProfessorService) {}  
+  fileName = '';
+  constructor(private _router : Router, private _service : ProfessorService, private http : HttpClient) {}
     
   ngOnInit() {
 
@@ -107,4 +108,25 @@ export class AddchapterComponent implements OnInit {
     )
   }
 
+  onFileSelected(event: Event ) {
+    const target= event.target as HTMLInputElement;
+
+    
+    if(target.files != null) {
+     let file = target.files[0];
+
+      if (file) {
+
+          this.fileName = file.name;
+
+          const formData = new FormData();
+
+          formData.append("file", file);
+
+          const upload$ = this.http.post("/file-upload", formData);
+
+          upload$.subscribe();
+      }
+    }
+  }
 }

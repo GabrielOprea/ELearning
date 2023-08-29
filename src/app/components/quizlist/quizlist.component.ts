@@ -29,12 +29,13 @@ export class QuizlistComponent implements OnInit {
   }
 
   addQuiz() {
+    this._router.navigate(['../../addquiz', this.courseid])
     console.log('aici')
   }
-  editQuiz(id: number) {
+  editQuiz(id: string) {
     console.log('aici')
   }
-  attemptQuiz(id: number) {
+  attemptQuiz(id: string) {
     console.log('aici')
   }
 }
