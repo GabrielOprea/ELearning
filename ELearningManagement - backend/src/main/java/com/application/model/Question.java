@@ -10,13 +10,61 @@ public class Question {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-  private int quizid;
-  public Question()
-  {
+  private String quizid;
+  private String question;
+
+  private String questionid;
+  private String vara;
+  private String varb;
+  private String varc;
+  private String vard;
+
+  private String correctvar;
+
+  public Question() {
     super();
   }
 
-  public Question(int id, int quizid, String vara, String varb, String varc, String vard, int correctvar) {
+  public String getQuestion() {
+    return question;
+  }
+
+  public void setQuestion(String question) {
+    this.question = question;
+  }
+
+  public Question(int id, String quizid, String question, String questionid, String vara, String varb, String varc, String vard, String correctvar) {
+    this.id = id;
+    this.quizid = quizid;
+    this.question = question;
+    this.questionid = questionid;
+    this.vara = vara;
+    this.varb = varb;
+    this.varc = varc;
+    this.vard = vard;
+    this.correctvar = correctvar;
+  }
+
+  public Question(int id, String quizid, String questionid, String vara, String varb, String varc, String vard, String correctvar) {
+    this.id = id;
+    this.quizid = quizid;
+    this.questionid = questionid;
+    this.vara = vara;
+    this.varb = varb;
+    this.varc = varc;
+    this.vard = vard;
+    this.correctvar = correctvar;
+  }
+
+  public String getQuestionid() {
+    return questionid;
+  }
+
+  public void setQuestionid(String questionid) {
+    this.questionid = questionid;
+  }
+
+  public Question(int id, String quizid, String vara, String varb, String varc, String vard, String correctvar) {
     this.id = id;
     this.quizid = quizid;
     this.vara = vara;
@@ -26,9 +74,6 @@ public class Question {
     this.correctvar = correctvar;
   }
 
-  private String vara;
-  private String varb;
-
   public int getId() {
     return id;
   }
@@ -37,11 +82,11 @@ public class Question {
     this.id = id;
   }
 
-  public int getQuizid() {
+  public String getQuizid() {
     return quizid;
   }
 
-  public void setQuizid(int quizid) {
+  public void setQuizid(String quizid) {
     this.quizid = quizid;
   }
 
@@ -77,15 +122,12 @@ public class Question {
     this.vard = vard;
   }
 
-  public int getCorrectvar() {
+  public String getCorrectvar() {
     return correctvar;
   }
 
-  public void setCorrectvar(int correctvar) {
+  public void setCorrectvar(String correctvar) {
     this.correctvar = correctvar;
   }
 
-  private String varc;
-  private String vard;
-  private int correctvar;
 }
