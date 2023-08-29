@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('loggedUser', this.user.email);
           sessionStorage.setItem('USER', "user");
           sessionStorage.setItem('ROLE', "user");
-          sessionStorage.setItem('name', data.name);
+          sessionStorage.setItem('name', data.username);
           this._router.navigate(['/userdashboard']);
         },
         (error: { error: any; }) => {
@@ -122,7 +122,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('USER', "professor");
           sessionStorage.setItem('ROLE', "professor");
           sessionStorage.setItem('professorname',this.professor.email);
-          sessionStorage.setItem('name', data.name);
+          sessionStorage.setItem('name', data.professorname);
           this._router.navigate(['/professordashboard']);
         },
         (error: { error: any; }) => {
