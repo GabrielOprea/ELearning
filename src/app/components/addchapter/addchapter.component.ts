@@ -108,6 +108,70 @@ export class AddchapterComponent implements OnInit {
     )
   }
 
+  onFileSelected1(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter1id = file.name;
+    }
+  }
+
+  onFileSelected2(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter2id = file.name;
+    }
+  }
+
+  onFileSelected3(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter3id = file.name;
+    }
+  }
+
+  onFileSelected4(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter4id = file.name;
+    }
+  }
+
+  onFileSelected5(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter5id = file.name;
+    }
+  }
+
+  onFileSelected6(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter6id = file.name;
+    }
+  }
+
+  onFileSelected7(event: Event ) {
+    this.onFileSelected(event);
+    const target= event.target as HTMLInputElement;
+    if(target.files != null) {
+      let file = target.files[0];
+      this.chapter.chapter7id = file.name;
+    }
+  }
+
+
   onFileSelected(event: Event ) {
     const target= event.target as HTMLInputElement;
 
@@ -118,12 +182,20 @@ export class AddchapterComponent implements OnInit {
       if (file) {
 
           this.fileName = file.name;
+          if(!(this.fileName.endsWith(".pdf") || this.fileName.endsWith(".mp4"))) {
+            alert("Please upload .mp4 or .pdf !");
 
+            target.value = "";
+            return;
+          }
           const formData = new FormData();
 
           formData.append("file", file);
-
-          const upload$ = this.http.post("/file-upload", formData);
+          console.log(formData);
+          const upload$ = this.http.post("http://localhost:8080/upload", formData, {
+            reportProgress: true,
+            responseType: 'json'
+          });
 
           upload$.subscribe();
       }

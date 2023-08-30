@@ -5,6 +5,7 @@ import { Chapter } from 'src/app/models/chapter';
 import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
 import { Course } from 'src/app/models/course';
+import { HttpClient } from '@angular/common/http';
 
 declare var require: any;
 const FileSaver = require('file-saver');
@@ -21,8 +22,9 @@ export class FullcourseComponent implements OnInit {
   chapterlist :Chapter[] | undefined
   courselist : Observable<Course[]> | undefined;
   chapter = new Chapter();
+  fileToDownload = '';
 
-  constructor(private _router : Router, private _service : UserService, private activatedRoute: ActivatedRoute) { }
+  constructor(private _router : Router, private _service : UserService, private activatedRoute: ActivatedRoute, private _http : HttpClient) { }
 
   ngOnInit(): void {
 
@@ -154,6 +156,7 @@ export class FullcourseComponent implements OnInit {
 
   openChapter(chapterid : string)
   {
+    this.fileToDownload = chapterid;
     console.log(chapterid);
     this.video = chapterid.split("watch?v=")[1];
   }
@@ -164,9 +167,13 @@ export class FullcourseComponent implements OnInit {
   }
 
   downloadPdf() {
-    const pdfUrl = './assets/Introduction to Spring MVC.pdf';
-    const pdfName = 'Introduction to Spring MVC';
-    FileSaver.saveAs(pdfUrl, pdfName);
+    
+    // const pdfUrl = './assets/Introduction to Spring MVC.pdf';
+    // const pdfName = 'Introduction to Spring MVC';
+    // FileSaver.saveAs(pdfUrl, pdfName);
+    console.log(this.fileToDownload);
+ 
+    window.open("http://localhost:8080/files/" + this.fileToDownload);
   }
 
   openDoc() {
