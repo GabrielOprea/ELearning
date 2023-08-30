@@ -1,4 +1,4 @@
-<div id="websitecoursecard" style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+<!-- <div id="websitecoursecard" style="margin-left: 10%; margin-right: 10%; margin-top: 20%;">
   <div class="headtext">Courses with Website Content</div>
   <owl-carousel-o [options]="owlOptions" (dragging)="owlDragging($event)">
     <ng-container>
@@ -149,4 +149,24 @@
   </div>
 </div>
 
-<br>
+<br> -->
+
+<div class="heading-text" style="margin-top: 10%; margin-bottom: 10%;"><b>Course List</b></div>
+
+<button class="container course-type" style="border: none;" (click)="showMenu('basic_i')">
+  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Basic Courses </b></div>
+  <i class="fa fa-caret-down" id="basic_i" *ngIf="!basic_shown"></i>
+  <i class="fa fa-caret-up" id="basic_i" *ngIf="basic_shown"></i>
+</button>
+
+<button class="container course-type" style="border: none;" (click)="showMenu('intermediate_i')">
+  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Intermediate Courses </b></div>
+  <i class="fa fa-caret-down" id="intermediate_i" *ngIf="!intermediate_shown"></i>
+  <i class="fa fa-caret-up" id="intermediate_i" *ngIf="intermediate_shown"></i>
+</button>
+
+<button class="container course-type" style="border: none;" (click)="showMenu('advanced_i')">
+  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Advanced Courses </b></div>
+  <i class="fa fa-caret-down" id="advanced_i" *ngIf="!advanced_shown"></i>
+  <i class="fa fa-caret-up" id="advanced_i" *ngIf="advanced_shown"></i>
+</button>

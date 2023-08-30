@@ -23,6 +23,10 @@ export class FullcourseComponent implements OnInit {
   courselist : Observable<Course[]> | undefined;
   chapter = new Chapter();
   fileToDownload = '';
+  showQA = false;
+  showDownloads = false;
+  showAnnouncements = false;
+  showNotes = false;
 
   constructor(private _router : Router, private _service : UserService, private activatedRoute: ActivatedRoute, private _http : HttpClient) { }
 
@@ -66,27 +70,40 @@ export class FullcourseComponent implements OnInit {
   }
   openQandA()
   {
-    $("#qa").show();
-    $("#overview,#announcements,#notes,#downloads").hide();
-    $("#downloadalert").css("display","none");
+
+    if(!this.showQA) {
+      $("#qa").show();
+    } else {
+      $("#qa").hide();
+    }
+    this.showQA = !this.showQA;
   }
   openNotes()
   {
-    $("#notes").show();
-    $("#overview,#announcements,#qa,#downloads").hide();
-    $("#downloadalert").css("display","none");
+    if(!this.showNotes) {
+      $("#notes").show();
+    } else {
+      $("#notes").hide();
+    }
+    this.showNotes = !this.showNotes;
   }
   openAnnouncements()
   {
-    $("#announcements").show();
-    $("#overview,#qa,#notes,#downloads").hide();
-    $("#downloadalert").css("display","none");
+    if(!this.showAnnouncements) {
+      $("#announcements").show();
+    } else {
+      $("#announcements").hide();
+    }
+    this.showAnnouncements = !this.showAnnouncements;
   }
   openDownloads()
   {
-    $("#downloads").show();
-    $("#overview,#qa,#notes,#announcements").hide();
-    $("#downloadalert").css("display","block");
+    if(!this.showDownloads) {
+      $("#downloads").show();
+    } else {
+      $("#downloads").hide();
+    }
+    this.showDownloads = !this.showDownloads;
   }
   newQuestion()
   {
@@ -181,4 +198,6 @@ export class FullcourseComponent implements OnInit {
     window.open(pdfUrl + '#page=1', '_blank', '');
   }
 
+  showMenu(id: string) {
+  }
 }

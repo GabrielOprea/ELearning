@@ -33,7 +33,9 @@ export class CourselistComponent implements OnInit {
   enrolledInstructorName = '';
   enrolledStatus: any;
   enrolledStatus2 = '';
-
+  basic_shown = false;
+  intermediate_shown = false;
+  advanced_shown = false;
   @ViewChild('alertOne') alertOne: ElementRef | undefined;
 
   constructor(private _service: ProfessorService, private userService: UserService, private _router: Router) { }
@@ -207,4 +209,20 @@ export class CourselistComponent implements OnInit {
     nav: true
   }
 
+  showMenu(id: string) {
+    // if(!this.shown) {
+    //  $("id").show();
+    // } else {
+    //   $("id").hide();
+    // }
+    if(id === "basic_i") {
+      this.basic_shown = !this.basic_shown;
+    }
+    if(id === "intermediate_i") {
+      this.intermediate_shown = !this.intermediate_shown;
+    }
+    if(id === "advanced_i") {
+      this.advanced_shown = !this.advanced_shown;
+    }
+  }
 }

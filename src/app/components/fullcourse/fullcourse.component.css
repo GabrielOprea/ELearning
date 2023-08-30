@@ -135,3 +135,68 @@
     margin-bottom: 8%;
     width: 70%;
 }
+
+.heading-text
+{
+    font-weight: bolder;
+    font-size: 40px;
+    margin-top: 1%;
+    color: #440707;
+    font-family: 'Aladin', cursive;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.card-text {
+    margin-left: 10%;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.course-type {
+    position: relative; /* Required for absolute positioning of the caret */
+    border-radius: 15px;
+    padding: 30px;
+    padding-left: 50px;
+    max-width: 600px;
+    height: 50px;
+    transition: transform .2s;
+    box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
+    display: flex; /* Ensure flex properties work */
+    align-items: center; /* Vertically center content */
+    justify-content: space-between; /* Horizontally distribute content */
+    color: #6c1466;
+    background-color: 
+    rgb(229, 213, 233);
+    margin-top: 2%;
+    margin-bottom: 2%;
+ }
+ 
+ .course-type:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+ }
+ 
+ .fa-caret-down {
+    text-align: right;
+    font-size: 30px;
+ }
+ .fa-caret-up {
+    text-align: right;
+    font-size: 30px;
+ }
+
+ .row
+  {
+    margin-left: 10%;
+    margin-top: 3%;
+  }
+  .column {
+    float: left;
+    width: 50%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }

@@ -99,7 +99,7 @@ export class AddchapterComponent implements OnInit {
     this._service.addNewChapters(this.chapter).subscribe(
       data => {
         console.log("chapter added Successfully !!!");
-        this._router.navigate(['/professordashboard']);
+        this._router.navigate(['/dashboard']);
       },
       error => {
         console.log("chapter adding Failed !!!");
