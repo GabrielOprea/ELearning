@@ -86,12 +86,33 @@
         <hr *ngIf="chapter.chapter8name !== ''">
     </div>
 
-    </div> -->
+    </div>
 
-    <!-- </div>  -->
+    </div>  -->
 </div>
 
 <div class="column">
+    <button class="container course-type" style="border: none;" (click)="openDownloads()">
+        <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Content</b></div>
+        <i class="fa fa-caret-down" id="advanced_i" *ngIf="!showDownloads"></i>
+        <i class="fa fa-caret-up" id="advanced_i" *ngIf="showDownloads"></i>
+    </button>
+    <div id="downloads" style="padding-bottom: 5%;" class="descriptions"> 
+        <ul *ngFor="let chapter of chapterlist" >
+            <div style="color: red; font-size: medium; font-weight: bolder; margin-top: 30%; margin-left: 5%; margin-right: 5%;" *ngIf="chapter.chapter1name === ''"> No Chapters available for this Course. Please wait, the Instructor will be adding the chapters soon here</div>
+            <li>{{chapter.chapter1name}}</li> 
+            <!-- view + download pt fiecare -->
+        </ul>
+        <!-- <div id="downloadalert" style="color: darkred; font-size: larger; display: none; font-weight: bolder; margin-top: 5%; margin-bottom: 5%; margin-right: 10%;" *ngIf="chapter.chapter1name === ''">Currently No Resources available for download. Please wait, the Instructor will be adding the Resources while adding the chapters soon here</div>
+        <div *ngIf="chapter.chapter1name !== ''">
+          <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">View and download your course related materials here ...</strong>
+          <div style="display: inline-block; width: 100%; margin-top: 5%; margin-bottom: 5%;">
+            <button type="button" class="btn btn-warning btn-sm" style="display: inline-block; margin-right: 5%; border-radius: 10px; font-weight: bolder; font-size: large;" (click)="openDoc()">View Material</button>
+            <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: large;"(click)="downloadPdf()">Download Resource</button>
+          </div>
+          <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 5%; cursor: pointer;">For more course materials, contact the Instructor or ADMIN - (Gowthamraj K) gowthamraj692@gmail.com / whatsapp to 9698382306</strong>
+        </div> -->
+    </div>
 <button class="container course-type" style="border: none;"  (click)="openQandA()">
     <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Q&A</b></div>
     <i class="fa fa-caret-down" id="advanced_i" *ngIf="!showQA"></i>
@@ -102,22 +123,6 @@
     <input class="form-control" id="searchtxt" type="text" name="searchQA" placeholder="search all course questions..."/>
     <strong id="newQA" (click)="newQuestion()" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">Ask a New Question ?</strong>
     <textarea type="text" id="questions" rows = "4" class="form-control" placeholder="ask your questions here..."></textarea>
-</div>
-<button class="container course-type" style="border: none;" (click)="openDownloads()">
-    <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Downloads</b></div>
-    <i class="fa fa-caret-down" id="advanced_i" *ngIf="!showDownloads"></i>
-    <i class="fa fa-caret-up" id="advanced_i" *ngIf="showDownloads"></i>
-</button>
-<div id="downloads" *ngFor="let chapter of chapterlist" style="padding-bottom: 5%;" class="descriptions">
-    <div id="downloadalert" style="color: darkred; font-size: larger; display: none; font-weight: bolder; margin-top: 5%; margin-bottom: 5%; margin-right: 10%;" *ngIf="chapter.chapter1name === ''">Currently No Resources available for download. Please wait, the Instructor will be adding the Resources while adding the chapters soon here</div>
-    <div *ngIf="chapter.chapter1name !== ''">
-      <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">View and download your course related materials here ...</strong>
-      <div style="display: inline-block; width: 100%; margin-top: 5%; margin-bottom: 5%;">
-        <button type="button" class="btn btn-warning btn-sm" style="display: inline-block; margin-right: 5%; border-radius: 10px; font-weight: bolder; font-size: large;" (click)="openDoc()">View Material</button>
-        <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: large;"(click)="downloadPdf()">Download Resource</button>
-      </div>
-      <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 5%; cursor: pointer;">For more course materials, contact the Instructor or ADMIN - (Gowthamraj K) gowthamraj692@gmail.com / whatsapp to 9698382306</strong>
-    </div>
 </div>
 <button class="container course-type" style="border: none;" (click)="openAnnouncements()">
     <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Announcements</b></div>

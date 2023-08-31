@@ -27,27 +27,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="center">
-                        <button (click)="addQuestion()" style="margin-right: 2%; border: none;" class="btn btn-primary">Add
-                            Question</button>
+                    <div style="padding-left: 10%;">
                         <div *ngFor="let question of questions; index as i">
-                            <div class="row register-form">
+                            <div class="row" style="margin-top: 5%;">
+                                <label>Question <b style="color:red;">*</b></label>  
+                                <input [(ngModel)] = "questions[i].question" [ngModelOptions]="{standalone: true}" class="form-control" style="width: 70%;" type = "text" placeholder="Enter the question" required>
+                                <div>
+                                <label for="cars" style="display: inline;">Choose the correct variant:</label>
+                                <select [(ngModel)] = "questions[i].correctvar" [ngModelOptions]="{standalone: true}" style="width: 20px; height: 20px; display: inline; position: absolute; margin: 3px;">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                  </select><br><br>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 1%;">
+
                                 <div class="col-md-6">
-                                    <label>Question <b style="color:red;">*</b></label>  
-                                    <input [(ngModel)] = "questions[i].question" [ngModelOptions]="{standalone: true}" class="form-control" type = "text" placeholder="Enter the question" required>
+
                                     <label>Variant A : <b style="color:red;">*</b></label>  <br>
                                     <input [(ngModel)] = "questions[i].vara" [ngModelOptions]="{standalone: true}" type = "text" placeholder="Enter Variant A" required> <br>
                                     <label>Variant B : <b style="color:red;">*</b></label>  <br>
                                     <input [(ngModel)] = "questions[i].varb" [ngModelOptions]="{standalone: true}" type = "text" placeholder="Enter Variant B" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cars">Choose the correct variant:</label>
-                                    <select [(ngModel)] = "questions[i].correctvar" [ngModelOptions]="{standalone: true}">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                      </select><br><br>
+                                    
                                     <label>Variant C : <b style="color:red;">*</b></label>  <br>
                                     <input [(ngModel)] = "questions[i].varc" [ngModelOptions]="{standalone: true}" type = "text" placeholder="Enter Variant C" required> <br>
                                     <label>Variant D : <b style="color:red;">*</b></label>  <br>
@@ -55,6 +60,8 @@
                                 </div>
                             </div>
                         </div>
+                            <button (click)="addQuestion()" id="chapter1btn" style="width: 20%; cursor: pointer; margin-top: 8px; background-color: rgb(15, 28, 130); color: white; font-weight: bold; border: none; font-size: small; outline: none; padding: 5px 15px 5px 15px; border-radius: 15px;"><i class="fa fa-plus"></i> Add Question</button>
+
                     </div>
                     <button [disabled]="quizform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Add Quiz</button>
                 </form>

@@ -32,18 +32,8 @@ export class FullcourseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    $("#overview").show();
     $("#qa, #notes, #announcements, #questions, #notestxt, #downloads").hide();
-    $("#downloadalert").css("display","none");
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
-
-    const target = 'https://www.youtube.com/iframe_api'
-
-    if (!this.isScriptLoaded(target)) {
-      const tag = document.createElement('script')
-      tag.src = target
-      document.body.appendChild(tag)
-    }
 
     this._service.getChappterListByCourseName(this.courseName).subscribe(
     data => {
@@ -58,16 +48,7 @@ export class FullcourseComponent implements OnInit {
     this.courselist = this._service.getCourseListByName(this.courseName);
 
   }
-  
-  ceva() {
-    console.log(this.chapterlist)
-  }
-  openOverview()
-  {
-    $("#overview").show();
-    $("#qa,#announcements,#notes,#downloads").hide();
-    $("#downloadalert").css("display","none");
-  }
+
   openQandA()
   {
 

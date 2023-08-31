@@ -47,7 +47,7 @@ export class AddcourseComponent implements OnInit {
       error => {
         console.log("Process Failed");
         console.log(error.error);
-        this.msg = "Course with "+this.course.coursename+" already exists !!!";
+        this.msg = "Course with name "+this.course.coursename+" already exists!";
       }
     )
   }
