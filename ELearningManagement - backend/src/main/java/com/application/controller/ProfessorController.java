@@ -263,4 +263,27 @@ public class ProfessorController
         return sb.toString();
 	}
 
+
+  @GetMapping("/getIntermediateCourses")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public ResponseEntity<List<Course>> getIntermediateCourses() throws Exception
+  {
+    List<Course> youtubeCourseList = courseService.fetchBySkilllevel("Intermediate");
+    return new ResponseEntity<List<Course>>(youtubeCourseList, HttpStatus.OK);
+  }
+  @GetMapping("/getBasicCourses")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public ResponseEntity<List<Course>> getBasicCourses() throws Exception
+  {
+    List<Course> youtubeCourseList = courseService.fetchBySkilllevel("Basic");
+    return new ResponseEntity<List<Course>>(youtubeCourseList, HttpStatus.OK);
+  }
+
+  @GetMapping("/getAdvancedCourses")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public ResponseEntity<List<Course>> getAdvancedCourses() throws Exception
+  {
+    List<Course> youtubeCourseList = courseService.fetchBySkilllevel("Advanced");
+    return new ResponseEntity<List<Course>>(youtubeCourseList, HttpStatus.OK);
+  }
 }
