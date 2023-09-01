@@ -71,5 +71,13 @@ export class UserService {
   UpdateUserProfile(user: any): Observable<any> {
     return this._http.put<any>(`${NAV_URL}/updateuser`, user);
   }
-
+  getIntermediateCourses(): Observable<any> {
+    return this._http.get<any>(`${NAV_URL}/getIntermediateCourses`);
+  }
+  getBasicCourses(): Observable<any> {
+    return this._http.get<any>(`${NAV_URL}/getBasicCourses`);
+  }
+  getAdvancedCourses(): Observable<any> {
+    return this._http.get<any>(`${NAV_URL}/getAdvancedCourses`);
+  }
 }

@@ -150,23 +150,116 @@
 </div>
 
 <br> -->
-
+<div class="modal fade" #alertOne id="alertOne" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Course Not Enrolled ⚠️</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="'assets/img/alert.gif'" style="margin-left: 35%;" width="150" height="150"><br>
+        <b style="font-weight: bold; color: red; align-content: center;">You have not yet Enrolled to this course,
+          Please Enroll to this course to proceed futher !!!</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="cursor: pointer;" data-bs-dismiss="modal">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="heading-text" style="margin-top: 10%; margin-bottom: 10%;"><b>Course List</b></div>
 
 <button class="container course-type" style="border: none;" (click)="showMenu('basic_i')">
-  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Basic Courses </b></div>
+  <div class="text-title"><b class="element" style="font-family: cursive; font-size: 22px;"> Basic Courses </b></div>
   <i class="fa fa-caret-down" id="basic_i" *ngIf="!basic_shown"></i>
   <i class="fa fa-caret-up" id="basic_i" *ngIf="basic_shown"></i>
 </button>
-
+<div class="container course-contents" *ngIf="basic_shown">
+      <div  *ngFor="let basic of basicCourses | async"  style="height: 200px;" id="bloodCards">
+        <div class="row">
+        <div class="column">
+          <div class="card-block">
+              <div class="text"><b class="element" style="font-family: cursive; font-size: 22px; color: #6c1466;"> {{basic.coursename}} </b>  <small style="font-weight: bold;"> ({{basic.courseid}}) </small></div>
+              <br>
+              <div class="text"><b class="element"> Instructor: </b>  {{basic.instructorname}} </div>
+              <div class="text"><b class="element"> Language: </b>  {{basic.language}} </div>
+              <div class="text"><b class="element"> Enrolled Students: </b>  {{basic.enrolledcount}} </div>
+          </div>
+        </div>
+        <div class="column" style="margin-top: 10%;">
+          <div style="padding: 5px;" *ngIf="currRole == 'user'">
+          <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
+          </div>
+          <div style="padding: 5px;" *ngIf="currRole == 'user'">
+            <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+            </div>
+          <div style="padding: 5px;">
+          <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
 <button class="container course-type" style="border: none;" (click)="showMenu('intermediate_i')">
-  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Intermediate Courses </b></div>
+  <div class="text-title"><b class="element" style="font-family: cursive; font-size: 22px;"> Intermediate Courses </b></div>
   <i class="fa fa-caret-down" id="intermediate_i" *ngIf="!intermediate_shown"></i>
   <i class="fa fa-caret-up" id="intermediate_i" *ngIf="intermediate_shown"></i>
 </button>
-
+<div class="container course-contents" *ngIf="intermediate_shown">
+  <div  *ngFor="let basic of intermediateCourses | async"  style="height: 200px;" id="bloodCards">
+    <div class="row">
+    <div class="column">
+      <div class="card-block">
+          <div class="text"><b class="element" style="font-family: cursive; font-size: 22px; color: #6c1466;"> {{basic.coursename}} </b>  <small style="font-weight: bold;"> ({{basic.courseid}}) </small></div>
+          <br>
+          <div class="text"><b class="element"> Instructor: </b>  {{basic.instructorname}} </div>
+          <div class="text"><b class="element"> Language: </b>  {{basic.language}} </div>
+          <div class="text"><b class="element"> Enrolled Students: </b>  {{basic.enrolledcount}} </div>
+      </div>
+    </div>
+    <div class="column" style="margin-top: 10%;"  *ngIf="currRole == 'user'">
+      <div style="padding: 5px;">
+      <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
+      </div>
+      <div style="padding: 5px;" *ngIf="currRole == 'user'">
+        <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+        </div>
+      <div style="padding: 5px;">
+      <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 <button class="container course-type" style="border: none;" (click)="showMenu('advanced_i')">
-  <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Advanced Courses </b></div>
+  <div class="text-title"><b class="element" style="font-family: cursive; font-size: 22px;"> Advanced Courses </b></div>
   <i class="fa fa-caret-down" id="advanced_i" *ngIf="!advanced_shown"></i>
   <i class="fa fa-caret-up" id="advanced_i" *ngIf="advanced_shown"></i>
 </button>
+<div class="container course-contents" *ngIf="advanced_shown">
+  <div  *ngFor="let basic of advancedCourses | async"  style="height: 200px;" id="bloodCards">
+    <div class="row">
+    <div class="column">
+      <div class="card-block">
+          <div class="text"><b class="element" style="font-family: cursive; font-size: 22px; color: #6c1466;"> {{basic.coursename}} </b>  <small style="font-weight: bold;"> ({{basic.courseid}}) </small></div>
+          <br>
+          <div class="text"><b class="element"> Instructor: </b>  {{basic.instructorname}} </div>
+          <div class="text"><b class="element"> Language: </b>  {{basic.language}} </div>
+          <div class="text"><b class="element"> Enrolled Students: </b>  {{basic.enrolledcount}} </div>
+      </div>
+    </div>
+    <div class="column" style="margin-top: 10%;">
+      <div style="padding: 5px;" *ngIf="currRole == 'user'">
+      <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
+      </div>
+      <div style="padding: 5px;" *ngIf="currRole == 'user'">
+        <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+        </div>
+      <div style="padding: 5px;">
+      <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

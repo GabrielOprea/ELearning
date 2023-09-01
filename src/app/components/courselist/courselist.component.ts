@@ -24,7 +24,9 @@ export class CourselistComponent implements OnInit {
   wishliststatus: Observable<any[]> | undefined;
   enrollment = new Enrollment();
   wishlist = new Wishlist();
-
+  basicCourses: Observable<Course[]> | undefined;
+  intermediateCourses: Observable<Course[]> | undefined;
+  advancedCourses: Observable<Course[]> | undefined;
   loggedUser = '';
   currRole = '';
   enrolledID = '';
@@ -46,9 +48,11 @@ export class CourselistComponent implements OnInit {
 
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
     this.currRole = this.currRole.replace(/"/g, '');
-
+    console.log(this.currRole);
     this.websitecourselist = this.userService.getWebsiteCourseList();
-
+    this.basicCourses = this.userService.getBasicCourses();
+    this.intermediateCourses = this.userService.getIntermediateCourses();
+    this.advancedCourses = this.userService.getAdvancedCourses();
     const target = 'https://www.youtube.com/iframe_api'
 
     if (!this.isScriptLoaded(target)) {
@@ -162,7 +166,10 @@ export class CourselistComponent implements OnInit {
 
   }
   visitCourse(coursename: string) {
-    if (this.enrolledStatus.slice(0, 1).shift() === "enrolled" || this.enrolledStatus2 === "enrolled") {
+    this.enrollmentstatus = this.userService.getEnrollmentStatus(coursename, this.loggedUser, this.currRole);
+    this.enrollmentstatus.subscribe(val => { this.enrolledStatus = val });
+  
+    if (this.enrolledStatus.slice(0, 1).shift() === "enrolled") {
       this._router.navigate(['/fullcourse', coursename]);
       console.log("tst");
     }
