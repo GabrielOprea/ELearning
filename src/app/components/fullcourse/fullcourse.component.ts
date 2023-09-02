@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import * as $ from 'jquery';
 import { Course } from 'src/app/models/course';
 import { HttpClient } from '@angular/common/http';
+import { Post } from 'src/app/models/post';
 
 declare var require: any;
 const FileSaver = require('file-saver');
@@ -17,8 +18,7 @@ const FileSaver = require('file-saver');
 })
 export class FullcourseComponent implements OnInit {
 
-  video = 'P2wNzig_SLA';
-  courseName = 'springboot';
+
   chapterlist :Chapter[] | undefined
   courselist : Observable<Course[]> | undefined;
   chapter = new Chapter();
@@ -27,6 +27,9 @@ export class FullcourseComponent implements OnInit {
   showDownloads = false;
   showAnnouncements = false;
   showNotes = false;
+  crtQuestion = '';
+  courseName = '';
+  courseid = '';
 
   constructor(private _router : Router, private _service : UserService, private activatedRoute: ActivatedRoute, private _http : HttpClient) { }
 
@@ -34,6 +37,7 @@ export class FullcourseComponent implements OnInit {
 
     $("#qa, #notes, #announcements, #questions, #notestxt, #downloads").hide();
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
+    this.courseid = this.activatedRoute.snapshot.params['courseid'];
 
     this._service.getChappterListByCourseName(this.courseName).subscribe(
     data => {
@@ -47,6 +51,22 @@ export class FullcourseComponent implements OnInit {
 
     this.courselist = this._service.getCourseListByName(this.courseName);
 
+  }
+
+  addQa() {
+    let crtPost = new Post();
+    crtPost.content = this.crtQuestion;
+    this.crtQuestion = '';
+    crtPost.courseid = this.courseid;
+    crtPost.poster = 'dinamo';
+    let date = new Date();
+    crtPost.timestamp = date.getDate() + "/" + date.getMonth() + "/"  + date.getFullYear();
+    this._service.addPost(crtPost).subscribe(
+      data => {
+        console.log("QA added Successfully !!!");
+        console.log(data);
+      }
+    )
   }
 
   openQandA()
@@ -156,7 +176,6 @@ export class FullcourseComponent implements OnInit {
   {
     this.fileToDownload = chapterid;
     console.log(chapterid);
-    // this.video = chapterid.split("watch?v=")[1];
   }
 
   isScriptLoaded(target: string): boolean

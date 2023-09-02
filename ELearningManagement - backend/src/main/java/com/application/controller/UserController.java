@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+
+import com.application.model.*;
+import com.application.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,53 +22,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.application.model.Chapter;
-import com.application.model.Enrollment;
-import com.application.model.Professor;
-import com.application.model.User;
-import com.application.model.Wishlist;
-import com.application.services.ChapterService;
-import com.application.services.CourseService;
-import com.application.services.EnrollmentService;
-import com.application.services.ProfessorService;
-import com.application.services.UserService;
-import com.application.services.WishlistService;
-
 @RestController
-public class UserController 
+public class UserController
 {
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private ProfessorService professorService;
-	
+
 	@Autowired
 	private CourseService courseService;
-	
+
 	@Autowired
 	private EnrollmentService enrollmentService;
-	
+
 	@Autowired
 	private WishlistService wishlistService;
-	
+
 	@Autowired
 	private ChapterService chapterService;
-	
-	@GetMapping("/userlist")
+  @Autowired
+  private PostService postService;
+
+  @GetMapping("/userlist")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<User>> getUsers() throws Exception
 	{
 		List<User> users = userService.getAllUsers();
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/enrollnewcourse/{email}/{role}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public String enrollNewCourse(@RequestBody Enrollment enrollment, @PathVariable String email, @PathVariable String role) throws Exception
 	{
 		String enrolledUserName = "",enrolledUserID = "";
-		
+
 		if(role.equalsIgnoreCase("user"))
 		{
 		    List<User> users = userService.getAllUsers();
@@ -96,15 +89,15 @@ public class UserController
 			    }
 		    }
 		}
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
-        Date date = new Date();  
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
         String todayDate = formatter.format(date);
         enrollment.setEnrolleddate(todayDate);
-         	
+
 		Enrollment enrollmentObj = null;
 		enrollmentObj = enrollmentService.saveEnrollment(enrollment);
 		System.out.println(enrollmentObj);
-		
+
         List<Enrollment> enrollments = enrollmentService.getAllEnrollments();
 		Map<String, Integer> enrolledCount = new LinkedHashMap<>();
 		for(Enrollment enrollObj : enrollments)
@@ -123,10 +116,10 @@ public class UserController
 			    courseService.updateEnrolledcount(obj.getKey(), obj.getValue());
 			}
 		}
-		
+
 		return "done";
 	}
-	
+
 	@GetMapping("/getenrollmentstatus/{coursename}/{email}/{role}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Set<String>> getEnrollmentStatus(@PathVariable String coursename, @PathVariable String email, @PathVariable String role) throws Exception
@@ -145,7 +138,7 @@ public class UserController
 		    professorObj = professorService.fetchProfessorByEmail(email);
 		    enrolledUser = professorObj.getProfessorname();
 		}
-		
+
 		Set<String> enrollmentStatus = new LinkedHashSet<>();
 		int flag = 0;
 		OUTER:for(Enrollment enrollmentObj : enrollments)
@@ -161,7 +154,7 @@ public class UserController
 		enrollmentStatus.add("notenrolled");
 		return new ResponseEntity<Set<String>>(enrollmentStatus, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/addtowishlist")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Wishlist> addNewCourse(@RequestBody Wishlist wishlist) throws Exception
@@ -170,7 +163,7 @@ public class UserController
 		wishlistObj = wishlistService.addToWishlist(wishlist);
 		return new ResponseEntity<Wishlist>(wishlistObj, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getwishliststatus/{coursename}/{email}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<Set<String>> getWishlistStatus(@PathVariable String coursename, @PathVariable String email) throws Exception
@@ -191,7 +184,7 @@ public class UserController
 		wishlistsStatus.add("notliked");
 		return new ResponseEntity<Set<String>>(wishlistsStatus, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getallwishlist")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Wishlist>> getAllWislist() throws Exception
@@ -199,7 +192,7 @@ public class UserController
 		List<Wishlist> Wishlists = wishlistService.getAllLikedCourses();
 		return new ResponseEntity<List<Wishlist>>(Wishlists, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getwishlistbyemail/{email}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Wishlist>> getWishlistByEmail(@PathVariable String email) throws Exception
@@ -207,7 +200,7 @@ public class UserController
 		List<Wishlist> Wishlists = wishlistService.fetchByLikeduser(email);
 		return new ResponseEntity<List<Wishlist>>(Wishlists, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getenrollmentbyemail/{email}/{role}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Enrollment>> getEnrollmentsByEmail(@PathVariable String email, @PathVariable String role) throws Exception
@@ -225,11 +218,11 @@ public class UserController
 		    professorObj = professorService.fetchProfessorByEmail(email);
 		    enrolledUser = professorObj.getProfessorname();
 		}
-		
+
 		List<Enrollment> enrollments = enrollmentService.fetchByEnrolledusername(enrolledUser);
 		return new ResponseEntity<List<Enrollment>>(enrollments, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getchapterlistbycoursename/{coursename}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Chapter>> getChapterListByCoursename(@PathVariable String coursename) throws Exception
@@ -250,15 +243,32 @@ public class UserController
 		}
 		return new ResponseEntity<List<Chapter>>(chapterLists, HttpStatus.OK);
 	}
-	
-	@GetMapping("/userprofileDetails/{email}")
+
+  @GetMapping("/getposts/{courseid}")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public ResponseEntity<List<Post>> getPostsByCourseid(@PathVariable String courseid) throws Exception
+  {
+    List<Post> postsLists = postService.fetchPostByCourseid(courseid);
+
+    return new ResponseEntity<List<Post>>(postsLists, HttpStatus.OK);
+  }
+
+  @PutMapping("/addpost")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public ResponseEntity<Post> addPost(@RequestBody Post post) throws Exception
+  {
+    Post postobj = postService.addNewPost(post);
+    return new ResponseEntity<Post>(postobj, HttpStatus.OK);
+  }
+
+  @GetMapping("/userprofileDetails/{email}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<User>> getProfileDetails(@PathVariable String email) throws Exception
 	{
 		List<User> users = userService.fetchProfileByEmail(email);
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/updateuser")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<User> updateUserProfile(@RequestBody User user) throws Exception
@@ -266,7 +276,7 @@ public class UserController
 		User userobj = userService.updateUserProfile(user);
 		return new ResponseEntity<User>(userobj, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/gettotalusers")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Integer>> getTotalUsers() throws Exception
@@ -276,7 +286,7 @@ public class UserController
 		usersCount.add(users.size());
 		return new ResponseEntity<List<Integer>>(usersCount, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/gettotalenrollmentcount")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Integer>> getTotalEnrollmentcount() throws Exception
@@ -291,7 +301,7 @@ public class UserController
 		enrollmentsCount.add(count);
 		return new ResponseEntity<List<Integer>>(enrollmentsCount, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/gettotalenrollments")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Integer>> getTotalEnrollments() throws Exception
@@ -301,5 +311,5 @@ public class UserController
 		enrollmentsCount.add(enrollments.size());
 		return new ResponseEntity<List<Integer>>(enrollmentsCount, HttpStatus.OK);
 	}
-	
+
 }
