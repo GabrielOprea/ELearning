@@ -156,7 +156,7 @@ export class FullcourseComponent implements OnInit {
   {
     this.fileToDownload = chapterid;
     console.log(chapterid);
-    this.video = chapterid.split("watch?v=")[1];
+    // this.video = chapterid.split("watch?v=")[1];
   }
 
   isScriptLoaded(target: string): boolean
@@ -164,14 +164,10 @@ export class FullcourseComponent implements OnInit {
     return document.querySelector('script[src="' + target + '"]') ? true : false
   }
 
-  downloadPdf() {
-    
-    // const pdfUrl = './assets/Introduction to Spring MVC.pdf';
-    // const pdfName = 'Introduction to Spring MVC';
-    // FileSaver.saveAs(pdfUrl, pdfName);
+  downloadPdf(chapterid : string) {
     console.log(this.fileToDownload);
  
-    window.open("http://localhost:8080/files/" + this.fileToDownload);
+    window.open("http://localhost:8080/files/" + chapterid);
   }
 
   openDoc() {
