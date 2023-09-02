@@ -195,7 +195,7 @@
             <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
             </div>
           <div style="padding: 5px;">
-          <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+          <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
           </div>
         </div>
       </div>
@@ -218,15 +218,15 @@
           <div class="text"><b class="element"> Enrolled Students: </b>  {{basic.enrolledcount}} </div>
       </div>
     </div>
-    <div class="column" style="margin-top: 10%;"  *ngIf="currRole == 'user'">
-      <div style="padding: 5px;">
+    <div class="column" style="margin-top: 10%;">
+      <div style="padding: 5px;" *ngIf="currRole == 'user'">
       <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
       </div>
       <div style="padding: 5px;" *ngIf="currRole == 'user'">
         <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
         </div>
       <div style="padding: 5px;">
-      <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+      <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
       </div>
     </div>
   </div>
@@ -257,7 +257,7 @@
         <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
         </div>
       <div style="padding: 5px;">
-      <button class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
+      <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
       </div>
     </div>
   </div>
