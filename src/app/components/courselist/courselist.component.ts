@@ -153,7 +153,7 @@ export class CourselistComponent implements OnInit {
     );
   }
 
-  createQuiz(courseid: string) {
+  gotoQuizes(courseid: string) {
     console.log('aici')
     this._router.navigate(['/quizlist', courseid])
   }

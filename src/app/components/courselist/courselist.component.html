@@ -192,11 +192,14 @@
           <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
           </div>
           <div style="padding: 5px;" *ngIf="currRole == 'user'">
-            <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+            <button (click)="enrollcourse(basic,loggedUser,currRole)"  class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
             </div>
           <div style="padding: 5px;">
           <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
           </div>
+          <div style="padding: 5px;">
+            <button (click)="gotoQuizes(basic.courseid)" class="fa fa-file-text" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Quizes</button>
+            </div>
         </div>
       </div>
       </div>
@@ -223,11 +226,14 @@
       <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
       </div>
       <div style="padding: 5px;" *ngIf="currRole == 'user'">
-        <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+        <button (click)="enrollcourse(basic,loggedUser,currRole)" class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
         </div>
       <div style="padding: 5px;">
       <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
       </div>
+      <div style="padding: 5px;">
+        <button (click)="gotoQuizes(basic.courseid)" class="fa fa-file-text" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Quizes</button>
+        </div>
     </div>
   </div>
   </div>
@@ -254,11 +260,14 @@
       <button class="fa fa-heart" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Add to wishlist</button>
       </div>
       <div style="padding: 5px;" *ngIf="currRole == 'user'">
-        <button class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
+        <button (click)="enrollcourse(basic,loggedUser,currRole)" class="fa fa-check-circle" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;"> Enroll</button>
         </div>
       <div style="padding: 5px;">
       <button (click)="visitCourse(basic.coursename)" class="fa fa-arrow-circle-o-right" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Visit Course</button>
       </div>
+      <div style="padding: 5px;">
+        <button (click)="gotoQuizes(basic.courseid)" class="fa fa-file-text" style="border: none; background-color: transparent; font-size: 20px; color: #6c1466;">Quizes</button>
+        </div>
     </div>
   </div>
   </div>

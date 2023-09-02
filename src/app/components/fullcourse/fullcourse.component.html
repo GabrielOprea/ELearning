@@ -114,15 +114,31 @@
         </div> -->
     </div>
 <button class="container course-type" style="border: none;"  (click)="openQandA()">
-    <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Q&A</b></div>
+    <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Forum</b></div>
     <i class="fa fa-caret-down" id="advanced_i" *ngIf="!showQA"></i>
     <i class="fa fa-caret-up" id="advanced_i" *ngIf="showQA"></i>
 </button>
 <div id="qa" style="padding-bottom: 5%;" class="descriptions">
-    <div style="display: inline-block; color: white; font-weight: bolder; background-color: black; padding: 1.1%; margin-left: 66%; border-radius: 5px; cursor: pointer;"><i class="fa fa-search"></i></div>
-    <input class="form-control" id="searchtxt" type="text" name="searchQA" placeholder="search all course questions..."/>
-    <strong id="newQA" (click)="newQuestion()" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">Ask a New Question ?</strong>
-    <textarea type="text" id="questions" rows = "4" class="form-control" placeholder="ask your questions here..."></textarea>
+    <strong id="newQA" (click)="newQuestion()" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">Add new post ?</strong>
+    <div id ="questions">
+    <textarea type="text" id="questions" rows = "4" class="form-control" placeholder=""></textarea>
+    
+    <form #qaform="ngForm" (ngSubmit)="addQa()">
+        <div class="row register-form">
+            <div>
+                <div class="form-group">
+                    <label>Your post : <b style="color:red;">*</b></label>
+                    <textarea #textbox class="form-control" rows="4" cols="50" (change)="crtQuestion = textbox.value" required>
+                
+                    </textarea>
+
+                    <button [disabled]="qaform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Add post</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
 </div>
 <button class="container course-type" style="border: none;" (click)="openAnnouncements()">
     <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Announcements</b></div>

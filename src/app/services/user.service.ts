@@ -6,6 +6,7 @@ import { Course } from '../models/course';
 import { Enrollment } from '../models/enrollment';
 import { Wishlist } from '../models/wishlist';
 import { Chapter } from '../models/chapter';
+import { Post } from '../models/post';
 
 const NAV_URL = environment.apiURL;
 
@@ -38,6 +39,14 @@ export class UserService {
 
   addToWishlist(wishlist: Wishlist): Observable<any> {
     return this._http.post<any>(`${NAV_URL}/addtowishlist`, wishlist);
+  }
+
+  addPost(post: Post): Observable<any> {
+    return this._http.post<any>(`${NAV_URL}/addpost`, post);
+  }
+
+  getPostsByCourseid(courseid: string): Observable<any> {
+    return this._http.get<Post[]>(`${NAV_URL}/getposts/` + courseid);
   }
 
   getEnrollmentStatus(coursename: string, loggedUser: string, currRole: string): Observable<any> {
