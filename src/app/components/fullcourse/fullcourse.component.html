@@ -100,8 +100,23 @@
     <div id="downloads" style="padding-bottom: 5%;" class="descriptions"> 
         <ul *ngFor="let chapter of chapterlist" >
             <div style="color: red; font-size: medium; font-weight: bolder; margin-top: 30%; margin-left: 5%; margin-right: 5%;" *ngIf="chapter.chapter1name === ''"> No Chapters available for this Course. Please wait, the Instructor will be adding the chapters soon here</div>
-            <li>{{chapter.chapter1name}}</li> 
-            <!-- view + download pt fiecare -->
+            <li style="padding: 10px;"  class="fa fa-file-text-o" > <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter1name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                height: 30px;"(click)="downloadPdf(chapter.chapter1id)">Download</button> </li>
+                <br>
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter2name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter2name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                height: 30px;"(click)="downloadPdf(chapter.chapter2id)">Download</button> </li> 
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter3name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter3name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                    height: 30px;"(click)="downloadPdf(chapter.chapter3id)">Download</button> </li>
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter4name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter4name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                    height: 30px;"(click)="downloadPdf(chapter.chapter4id)">Download</button> </li> 
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter5name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter5name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                    height: 30px;"(click)="downloadPdf(chapter.chapter5id)">Download</button> </li> 
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter6name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter6name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                    height: 30px;"(click)="downloadPdf(chapter.chapter6id)">Download</button> </li> 
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter7name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter7name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                height: 30px;"(click)="downloadPdf(chapter.chapter7id)">Download</button> </li> 
+            <li style="padding: 10px;"  class="fa fa-file-text-o" *ngIf="chapter.chapter8name !== ''"> <div style="font-size: 20px; display: inline-block; padding: 10px;">{{chapter.chapter8name}} </div>   <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: 10px; max-width: 150px;
+                    height: 30px;"(click)="downloadPdf(chapter.chapter8id)">Download</button> </li> 
         </ul>
         <!-- <div id="downloadalert" style="color: darkred; font-size: larger; display: none; font-weight: bolder; margin-top: 5%; margin-bottom: 5%; margin-right: 10%;" *ngIf="chapter.chapter1name === ''">Currently No Resources available for download. Please wait, the Instructor will be adding the Resources while adding the chapters soon here</div>
         <div *ngIf="chapter.chapter1name !== ''">
@@ -146,5 +161,21 @@
     <textarea type="text" id="notestxt" rows = "2" class="form-control" placeholder="add your new notes here..."></textarea>
     <br><br><strong style="margin-top: 3%; font-weight: normal;">Click the "Create new note" or the "+" button to make your first note.</strong>
 </div>
+<button class="container course-type" style="border: none;" (click)="openDownloads()">
+    <div class="text"><b class="element" style="font-family: cursive; font-size: 22px;"> Downloads</b></div>
+    <i class="fa fa-caret-down" id="advanced_i" *ngIf="!showDownloads"></i>
+    <i class="fa fa-caret-up" id="advanced_i" *ngIf="showDownloads"></i>
+</button>
+<!-- <div id="downloads" *ngFor="let chapter of chapterlist" style="padding-bottom: 5%;" class="descriptions">
+    <div id="downloadalert" style="color: darkred; font-size: larger; display: none; font-weight: bolder; margin-top: 5%; margin-bottom: 5%; margin-right: 10%;" *ngIf="chapter.chapter1name === ''">Currently No Resources available for download. Please wait, the Instructor will be adding the Resources while adding the chapters soon here</div>
+    <div *ngIf="chapter.chapter1name !== ''">
+      <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 4%; cursor: pointer;">View and download your course related materials here ...</strong>
+      <div style="display: inline-block; width: 100%; margin-top: 5%; margin-bottom: 5%;">
+        <button type="button" class="btn btn-warning btn-sm" style="display: inline-block; margin-right: 5%; border-radius: 10px; font-weight: bolder; font-size: large;" (click)="openDoc()">View Material</button>
+        <button type="button" class="btn btn-success btn-sm" style="display: inline-block; border-radius: 10px; font-weight: bolder; font-size: large;"(click)="downloadPdf()">Download Resource</button>
+      </div>
+      <strong id="downloadtxt" style="font-size: large; font-weight: bolder; color: black; margin-bottom: 5%; cursor: pointer;">For more course materials, contact the Instructor or ADMIN - (Gowthamraj K) gowthamraj692@gmail.com / whatsapp to 9698382306</strong>
+    </div>
+</div> -->
 </div>
 </div>
